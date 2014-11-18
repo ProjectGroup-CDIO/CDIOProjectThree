@@ -9,7 +9,7 @@ public class Account {
 	}
 
 	public Account() {
-		balance = 1000;
+		balance = 30000;
 	}
 
 	public String deposit(int amount) {
