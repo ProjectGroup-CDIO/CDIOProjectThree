@@ -21,7 +21,12 @@ public class Game {
 	Language language = new Language(); 
 
 	private boolean playerOne = true;
-	private boolean playerTwo = false;
+	private boolean playerTwo = true;
+	private boolean playerThree = true;
+	private boolean playerFour = true;
+	private boolean playerFive = true;
+	private boolean playerSix = true;
+	private boolean activePlayers[]={playerOne,playerTwo,playerThree,playerFour,playerFive,playerSix};
 	private boolean game = true;
 
 	//Language used in the code, will be changed by the language setting.
