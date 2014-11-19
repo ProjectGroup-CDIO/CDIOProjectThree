@@ -85,7 +85,8 @@ public class Game {
 			k++;
 			color = color + 50;
 		}
-
+		
+		int turn = 1;
 		while(game) {
 			//user prompted button, when pressed the value of rollDice is stored in i.
 			i = GUI.getUserButtonPressed(null, rollDice);
@@ -96,45 +97,23 @@ public class Game {
 				int trow=dieOne.getFaceValue()+dieTwo.getFaceValue();
 				GUI.setDice(dieOne.getFaceValue(), dieTwo.getFaceValue());
 
-				if(playerOne) {
-					GUI.removeAllCars(playerOneName);//Removes the player from the board. Only used in case of trow == 10, as the car would have otherwise been removed on playerTwos turn
-					GUI.setCar(1, playerOneName);//Sets the player at Start (field1)
-					GUI.removeAllCars(playerTwoName);//Resets the positions of the other player
-					GUI.setCar(1, playerTwoName);
-					GUI.removeCar(1, playerOneName); //Removes the car from Start
-					GUI.setCar(trow, playerOneName); //sets car at field corresponding to sum of faceValues
-					Fields.field(player1, trow, i);
-					GUI.setBalance(playerOneName, player1.getAccount().getBalance());
+				if(activePlayers[turn]) {
+					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board. Only used in case of trow == 10, as the car would have otherwise been removed on playerTwos turn
+					GUI.setCar(1, playerNames[turn]);//Sets the player at Start (field1)
+					GUI.removeCar(1, playerNames[turn]); //Removes the car from Start
+					GUI.setCar(trow, playerNames[turn]); //sets car at field corresponding to sum of faceValues
+					Fields.field(playerTurn[turn], trow, i);
+					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
 					//Sets the player to lose in case of 0 points
-					if(player1.getAccount().getBalance()==0){
-						playerOneLoss = true;
+					if(playerTurn[turn].getAccount().getBalance()==0){
+						activePlayers[turn] = false;
+						GUI.removeAllCars(playerNames[turn]);
 						trow = 0; //In order for a player not to get an extra turn by trow==10, when player have reached 0 points
 					}
 					//Sets the player to win in case of >= 3000 points
-					if (player1.getAccount().getBalance()>=3000){
-						playerOneVic = true;
-					}
-					 
-				}
-
-				if(playerTwo) {
-					GUI.removeAllCars(playerOneName);
-					GUI.setCar(1, playerOneName);
-					GUI.removeAllCars(playerTwoName);
-					GUI.setCar(1, playerTwoName);
-					GUI.removeCar(1, playerTwoName);
-					GUI.setCar(trow, playerTwoName); 
-					Fields.field(player2, trow, i);
-					GUI.setBalance(playerTwoName, player2.getAccount().getBalance());
-					if(player2.getAccount().getBalance()==0){
-						playerTwoLoss = true;
-						trow = 0; //In order for a player not to get an extra turn by trow==10, when player have reached 0 points
-					}
-					if (player2.getAccount().getBalance()>=3000){
-						playerTwoVic = true;
-					}
-					if(playerOneVic || playerOneLoss || playerTwoVic || playerTwoLoss){
-						game = false;
+					turn++;
+					if (turn>NumberOfPlayers){
+						turn=1;
 					}
 				}
 				//The turn is not switched if a player rolls 10
