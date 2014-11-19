@@ -63,8 +63,11 @@ public class Game {
 
 
 		//User names are prompted from the users, and store in previous variables
-		playerOneName = GUI.getUserString(typeNameOne);
-		playerTwoName = GUI.getUserString(typeNameTwo);
+		int n = 1;
+		while (n<=NumberOfPlayers){
+			playerNames[n]= GUI.getUserString(typeNames[n]);
+			n++;
+		}
 
 		//variable used to store the button pressed value
 		String i = "";
