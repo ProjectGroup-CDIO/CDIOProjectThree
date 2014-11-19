@@ -16,7 +16,8 @@ public class Game {
 	Player player4 = new Player("PlayerFour");
 	Player player5 = new Player("PlayerFive");
 	Player player6 = new Player("PlayerSix");
-	
+	//All the players are placed in an array
+	Player playerTurn[] = {player1,player2,player3,player4,player5,player6};
 	Language language = new Language(); 
 
 	private boolean playerOne = true;
