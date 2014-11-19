@@ -36,6 +36,7 @@ public class Game {
 	private static String typeNameFour = "";
 	private static String typeNameFive = ""; 
 	private static String typeNameSix = "";
+	//All typeNames have been placed in an array
 	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
 	
 	private static String rollDice = "";
@@ -46,8 +47,9 @@ public class Game {
 
 
 	public void game(){
-		//variables created for storing the users names for the game
-		String playerNames[] = {"","","","","","",""};
+		//variables created for storing the users names for the game in an array
+		//With only a Max amount of 6 players, the len of the array is only 6
+		String playerNames[] = {"","","","","",""};
 		
 		//The choice of amount of players
 		String[] amount = { "2", "3", "4","5","6"};
@@ -55,7 +57,7 @@ public class Game {
 		String players = (String) JOptionPane.showInputDialog(null, "Choose amount of players:",
 				"The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
 				amount, 
-				amount[0]); 
+				amount[0]); //Default choice is 2 players
 		int NumberOfPlayers = Integer.parseInt(players);
 
 		//language selection, changes variables and sets the game board language.
@@ -63,8 +65,8 @@ public class Game {
 
 
 		//User names are prompted from the users, and store in previous variables
-		int n = 1;
-		while (n<=NumberOfPlayers){
+		int n = 0; //Variable used to run through the array
+		while (n<=NumberOfPlayers-1){
 			playerNames[n]= GUI.getUserString(typeNames[n]);
 			n++;
 		}
@@ -77,33 +79,34 @@ public class Game {
 		Die dieTwo = new Die();
 
 		//adds player cars to the game
-		int k = 1;
-		int color = 50;
-		while (k<=NumberOfPlayers){
+		n = 0; //Resest the variable used to run through the array
+		int color = 0;
+		while (n<=NumberOfPlayers-1){
 			Game.setTypeNameOne("Indtast navn for spiller 1");
-			GUI.addPlayer(playerNames[k],playerTurn[k].getAccount().getBalance(),color,0,75);
-			k++;
+			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color,0,75);
+			n++;
 			color = color + 50;
 		}
 		
-		int turn = 1;
-		int inactivePlayers  = 0;
-		int playerChecks = 1;
+		int turn = 0; //Variable used to determine which players turn it is.
+		int inactivePlayers  = 0; //Variable to check amount of inactive player
+		n = 0; //Resest the variable used to run through the array
+		//Maximum amount of players that can be inactive
 		int MaxInactive = NumberOfPlayers - 1;
 		while(game) {
 			//Checks how many players have lost
-			while (playerChecks <= NumberOfPlayers){
-				if (activePlayers[playerChecks]!=true){
-					inactivePlayers++;
+			while (n <= NumberOfPlayers - 1){
+				if (activePlayers[n]!=true){
+					inactivePlayers++;//Increments in case of a player who have lost
 				}
-				System.out.println(playerChecks+" and "+NumberOfPlayers+" and "+inactivePlayers);
-				playerChecks++;
+				System.out.println(n+" and "+NumberOfPlayers+" and "+inactivePlayers);
+				n++;
 			}
 			//Checks if the players have already lost. If so, next players turn
 			if (activePlayers[turn]!=true){
 				turn++;
-				if (turn>NumberOfPlayers){
-					turn=1;
+				if (turn>NumberOfPlayers-1){
+					turn=0;
 				}
 				continue;
 			}
@@ -115,7 +118,7 @@ public class Game {
 			//Resets in case of new turn
 			else if(inactivePlayers!=MaxInactive){
 				inactivePlayers  = 0;
-				playerChecks = 1;
+				n = 0;
 			}
 			
 			//user prompted button, when pressed the value of rollDice is stored in i.
@@ -137,13 +140,14 @@ public class Game {
 					//Sets the player to lose in case of 0 points
 					if(playerTurn[turn].getAccount().getBalance()==0){
 						activePlayers[turn] = false;
-						GUI.removeAllCars(playerNames[turn]);
+						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
 						trow = 0; //In order for a player not to get an extra turn by trow==10, when player have reached 0 points
 					}
-					//Sets the player to win in case of >= 3000 points
+					//Next players turn
 					turn++;
-					if (turn>NumberOfPlayers){
-						turn=1;
+					//If turn is out of bounds. It is reset to 0
+					if (turn>NumberOfPlayers-1){
+						turn=0;
 					}
 				}
 				//The turn is not switched if a player rolls 10
