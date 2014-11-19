@@ -134,6 +134,7 @@ public class Game {
 			}
 
 		}
+		/*
 		if (game != true){
 			Car car = new Car.Builder()
 			.typeRacecar()
@@ -178,9 +179,9 @@ public class Game {
 				GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
 
 			}
-
+			
 		}
-
+		*/
 	}
 	
 	//Language Strings getters and setters
