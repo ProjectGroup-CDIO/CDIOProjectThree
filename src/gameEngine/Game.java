@@ -87,7 +87,18 @@ public class Game {
 		}
 		
 		int turn = 1;
+		int inactivePlayers  = 0;
+		int playerChecks = 1;
+		int MaxInactive = NumberOfPlayers - 1;
 		while(game) {
+			//Checks how many players have lost
+			while (playerChecks <= NumberOfPlayers){
+				if (activePlayers[playerChecks]!=true){
+					inactivePlayers++;
+				}
+				System.out.println(playerChecks+" and "+NumberOfPlayers+" and "+inactivePlayers);
+				playerChecks++;
+			}
 			//Checks if the players have already lost. If so, next players turn
 			if (activePlayers[turn]!=true){
 				turn++;
@@ -95,6 +106,16 @@ public class Game {
 					turn=1;
 				}
 				continue;
+			}
+			//Terminates the game if all except one have lost
+			if (inactivePlayers==MaxInactive){
+				game=false;
+				break;
+			}
+			//Resets in case of new turn
+			else if(inactivePlayers!=MaxInactive){
+				inactivePlayers  = 0;
+				playerChecks = 1;
 			}
 			
 			//user prompted button, when pressed the value of rollDice is stored in i.
