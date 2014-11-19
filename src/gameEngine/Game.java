@@ -76,10 +76,15 @@ public class Game {
 		Die dieOne = new Die();
 		Die dieTwo = new Die();
 
-		//adds player cars to the
-		GUI.addPlayer(playerTwoName, player2.getAccount().getBalance(), 255, 255, 255); //last three arguments are RGB-color
-		GUI.addPlayer(playerOneName, player1.getAccount().getBalance(), 0, 0, 0);	    
-
+		//adds player cars to the game
+		int k = 1;
+		int color = 50;
+		while (k<=NumberOfPlayers){
+			Game.setTypeNameOne("Indtast navn for spiller 1");
+			GUI.addPlayer(playerNames[k],playerTurn[k].getAccount().getBalance(),color,0,75);
+			k++;
+			color = color + 50;
+		}
 
 		while(game) {
 			//user prompted button, when pressed the value of rollDice is stored in i.
