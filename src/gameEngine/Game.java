@@ -120,15 +120,6 @@ public class Game {
 				if(trow==10){
 					continue;
 				}
-				else if(playerOne){
-					playerOne = false;
-					playerTwo = true;
-				}
-				else if(playerTwo){
-					playerOne = true;
-					playerTwo = false;
-				}
-
 			}
 
 		}
