@@ -32,6 +32,12 @@ public class Game {
 	//Language used in the code, will be changed by the language setting.
 	private static String typeNameOne = ""; 
 	private static String typeNameTwo = "";
+	private static String typeNameThree = ""; 
+	private static String typeNameFour = "";
+	private static String typeNameFive = ""; 
+	private static String typeNameSix = "";
+	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
+	
 	private static String rollDice = "";
 	private static String won = "";
 	private static String isWinner = "";
@@ -41,20 +47,19 @@ public class Game {
 
 	public void game(){
 		//variables created for storing the users names for the game
-		String playerOneName = ""; 
-		String playerTwoName = ""; 
-		//The choices of languages that can be used
-		String[] choices = { "English", "Dansk", "Deutsch"};
-		//Selection box in which the user has to choose language
-		String input = (String) JOptionPane.showInputDialog(null, "Choose language:",
+		String playerNames[] = {"","","","","","",""};
+		
+		//The choice of amount of players
+		String[] amount = { "2", "3", "4","5","6"};
+		//Selection box in which amount of players
+		String players = (String) JOptionPane.showInputDialog(null, "Choose amount of players:",
 				"The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
-				choices, 
-				choices[1]); 
-
-		//System.out.println(input);
+				amount, 
+				amount[0]); 
+		int NumberOfPlayers = Integer.parseInt(players);
 
 		//language selection, changes variables and sets the game board language.
-		language.languageSelection(input);
+		language.languageSelection("English");
 
 
 		//User names are prompted from the users, and store in previous variables
