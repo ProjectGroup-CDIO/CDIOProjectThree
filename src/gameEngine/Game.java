@@ -2,8 +2,10 @@
 package gameEngine;
 
 import javax.swing.JOptionPane;
+
 import boundaryToMatador.GUI;
 import boundaryToMatador.Car; //in order to create a custom car
+
 import java.awt.Color; //in order to change color of the car 
 
 public class Game {
@@ -15,6 +17,10 @@ public class Game {
 
 	Player player1 = new Player("PlayerOne");
 	Player player2 = new Player("PlayerTwo");
+	Player player3 = new Player("PlayerThree");
+	Player player4 = new Player("PlayerFour");
+	Player player5 = new Player("PlayerFive");
+	Player player6 = new Player("PlayerSix");
 	
 	Language language = new Language(); 
 
