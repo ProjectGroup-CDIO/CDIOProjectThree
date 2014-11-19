@@ -88,6 +88,15 @@ public class Game {
 		
 		int turn = 1;
 		while(game) {
+			//Checks if the players have already lost. If so, next players turn
+			if (activePlayers[turn]!=true){
+				turn++;
+				if (turn>NumberOfPlayers){
+					turn=1;
+				}
+				continue;
+			}
+			
 			//user prompted button, when pressed the value of rollDice is stored in i.
 			i = GUI.getUserButtonPressed(null, rollDice);
 			
