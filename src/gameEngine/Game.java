@@ -10,11 +10,6 @@ import java.awt.Color; //in order to change color of the car
 
 public class Game {
 
-	private boolean playerOneVic = false;
-	private boolean playerTwoVic = false;
-	private boolean playerOneLoss = false;
-	private boolean playerTwoLoss = false;
-
 	Player player1 = new Player("PlayerOne");
 	Player player2 = new Player("PlayerTwo");
 	Player player3 = new Player("PlayerThree");
