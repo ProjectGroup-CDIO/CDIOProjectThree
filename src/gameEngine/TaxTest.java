@@ -29,5 +29,18 @@ public class TaxTest{
 		assertEquals(penge.takePercentTax(lars), 3000);
 		assertEquals(lars.getAccount().getBalance(),27000);
 	}
+	@Test
+	public void testlandOnField1(){
+		penge.landOnField(lars);
+		assertEquals(lars.getAccount().getBalance(),28000);
+	
+		
+	}
+	@Test
+	public void testlandOnField2(){
+		penge.landOnField(lars);
+		assertEquals(lars.getAccount().getBalance(),27000);
+		
+	}
 
 }

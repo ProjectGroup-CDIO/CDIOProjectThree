@@ -1,7 +1,7 @@
 package gameEngine;
 
 public class Fleet extends Ownable {
-		
+
 	public Fleet(String fieldName, int fieldNumber, Player owner, int price, int fleetValue, Player howLandOnField) {
 		super(fieldName, fieldNumber, owner, price);
 	}
@@ -41,9 +41,9 @@ public class Fleet extends Ownable {
 
 	@Override
 	public void landOnField(Player player) {
-		super.
-		// TODO Auto-generated method stub
-		
+		super.getOwner().getAccount().deposit(getFleetRent());
+		player.getAccount().withdraw(getFleetRent());
+	
 	}
 	
 	
