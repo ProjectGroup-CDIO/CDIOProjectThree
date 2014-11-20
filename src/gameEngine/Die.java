@@ -2,11 +2,9 @@ package gameEngine;
 
 public class Die 
 {
-	
-	
-	private final int MAX = 6; //maximal v�rdi p� terningen
-	
-	private int faceValue; // viser ternigens aktuelle v�rdi
+	int lastRoll;
+	private final int MAX = 6; //max value of die
+	private int faceValue; //shows current value of die
 	
 	public int rollDie()
 	{
@@ -23,9 +21,6 @@ public class Die
 	public void setFaceValue(int faceValue) {
 		this.faceValue = faceValue;
 	}
-	
-	
-
 }
 
 

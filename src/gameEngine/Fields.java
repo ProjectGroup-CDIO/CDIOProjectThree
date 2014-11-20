@@ -1,10 +1,12 @@
 package gameEngine;
 
-public class Fields {
+public abstract class Fields {
 	
 
+	
 	String fieldName;
 	int fieldNumber;
+	
 	
 	
 	public Fields(String fieldName, int fieldNumber) {
@@ -12,10 +14,7 @@ public class Fields {
 		this.fieldNumber = fieldNumber; 
 	}
 	
-	public static void landOnField(Player player) {
-		
-
-	}
+	public abstract void landOnField(Player player);
 }
 
 //	public static String field(Player player, int trow, String i){ 
