@@ -3,8 +3,10 @@ package gameEngine;
 public class Fields {
 	
 
+	
 	String fieldName;
 	int fieldNumber;
+	
 	
 	
 	public Fields(String fieldName, int fieldNumber) {
