@@ -14,6 +14,7 @@ public class Territory extends Ownable {
 	 *Withdraws the points from the lander and deposits them to the owner
 	 * @param lander is the player who lands on the field
 	 */
+	@Override
 	public void landOnField( Player lander){
 		lander.getAccount().withdraw(rent);
 		super.getOwner().getAccount().deposit(rent);

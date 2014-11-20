@@ -18,7 +18,8 @@ public class Fleet extends Ownable {
 	final int RENT_3 = 2000;
 	final int RENT_4 = 4000;
 
-	public int getFleetRent(){
+	@Override
+	public int getRent(){
 		switch (super.getOwner().getFleetsOwned()){
 	
 		case 1: 
@@ -31,21 +32,14 @@ public class Fleet extends Ownable {
 			return RENT_4;
 		default:
 			return 0;
-			
-			
+				
 		}
 	}
 
 	@Override
-	public int getRent() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public void landOnField(Player player) {
-		super.getOwner().getAccount().deposit(getFleetRent());
-		player.getAccount().withdraw(getFleetRent());
+		super.getOwner().getAccount().deposit(getRent());
+		player.getAccount().withdraw(getRent());
 	
 	}
 
