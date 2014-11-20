@@ -8,25 +8,30 @@ public class LaborCamp extends Ownable {
 	 * @param faceValue The value of the dice
 	 */
 	
-	int baseRent;
+	int baseRent = 100;
 	
 	//BaseRent defined 
-	public LaborCamp(String fieldName, Player ownerOfCurrentField, int faceValue){
-		super(fieldName, faceValue, ownerOfCurrentField, faceValue);
-		this.baseRent = faceValue*100;
+	public LaborCamp(String fieldName, int fieldNumber, int price){ //Har fjernet faceValue fra constructor
+		super(fieldName, fieldNumber, price);
 	}
 	//Withdraws BaseRent from player who lands on the field, and deposits BaseRent to player who owns the field
 	public void completeBaseRent(Player ownerOfCurrentField, Player playerWhoLandedOnCurrentField){
 		playerWhoLandedOnCurrentField.getAccount().withdraw(baseRent);
 		ownerOfCurrentField.getAccount().deposit(baseRent);
 	}
+	
+	public int getRent(int faceValue) {
+		return baseRent * faceValue; 
+	}
+	
 	@Override
 	public int getRent() {
-		// TODO Auto-generated method stub
-		return 0;
+		
 	}
+
 	@Override
-	public void landOnField(Player playerWhoLandedOnField) {
+	public void landOnField(Player playerWhoLandedOnField) { //Hvordan får man implementeret terningkastet i en abstract method, når der ikke må ændres på parameterne?
+		
 		playerWhoLandedOnField.getAccount().withdraw(baseRent);
 		super.getOwner().getAccount().deposit(baseRent);
 		

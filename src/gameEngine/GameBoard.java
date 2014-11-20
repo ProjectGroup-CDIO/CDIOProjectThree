@@ -14,11 +14,14 @@ public class GameBoard {
 		new Territory("Palace Gates", 9, 5500, 2600),
 		new Territory("Tower", 10, 6000, 3200),
 		new Territory("Castle", 11, 8000, 4000),
-		new Refuge()
+		new Refuge("Walled City", 12, 5000), 
+		new Refuge("Monastery", 13, 500),
+		new LaborCamp()
+		;
 	
-	field[0] = terr1;
-	terr1 = new Territory("Tribe Encampment", 1, 1000, 100);
-	
+//	field[0] = terr1;
+//	terr1 = new Territory("Tribe Encampment", 1, 1000, 100);
+//	
 }
 }
 

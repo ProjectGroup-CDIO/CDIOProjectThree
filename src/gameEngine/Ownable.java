@@ -12,11 +12,11 @@ public abstract class Ownable extends Fields {
 	 * @param owner owner of the field
 	 * @param price price of the field
 	 */
-	public Ownable(String fieldName, int fieldNumber, Player owner, int price) {
-		super(fieldName, fieldNumber);
-		this.price = price;
-		this.owner = owner;
-	}
+//	public Ownable(String fieldName, int fieldNumber, Player owner, int price) {
+//		super(fieldName, fieldNumber);
+//		this.price = price;
+//		this.owner = owner;
+//	}
 	
 	/**
 	 * Creates ownable field without owner
