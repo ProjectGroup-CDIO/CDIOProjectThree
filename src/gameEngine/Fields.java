@@ -1,6 +1,7 @@
 package gameEngine;
 
 public class Fields {
+	
 
 	public static String field(Player player, int trow, String i){ 
 
