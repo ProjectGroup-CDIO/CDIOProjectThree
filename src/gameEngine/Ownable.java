@@ -1,6 +1,6 @@
 package gameEngine;
 
-public class Ownable extends Fields {
+public abstract class Ownable extends Fields {
 	
 	private Player owner;
 	private int price;
@@ -58,7 +58,5 @@ public class Ownable extends Fields {
 		return owner == null;
 	}
 	
-	public int getRent() {
-		//to be continued
-	}
+	public abstract int getRent();
 }
