@@ -20,8 +20,10 @@ public class LaborCamp extends Ownable {
 		return 0;
 	}
 	@Override
-	public void landOnField(Player player) {
-		// TODO Auto-generated method stub
+	public void landOnField(Player playerWhoLandedOnField) {
+		playerWhoLandedOnField.getAccount().withdraw(baseRent);
+		super.getOwner().getAccount().deposit(baseRent);
+		
 		
 	}
 }
