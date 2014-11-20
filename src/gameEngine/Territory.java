@@ -8,5 +8,14 @@ public class Territory extends Ownable {
 		super(fieldName, owner, price);
 		this.rent = rent;
 	}
-
+	private String name = "Tribe Encampent";
+		public void completeRent(Player owner, Player lander){
+		lander.getAccount().withdraw(rent);
+		owner.getAccount().deposit(rent);
+	
+	}
+	
 }
+
+
+
