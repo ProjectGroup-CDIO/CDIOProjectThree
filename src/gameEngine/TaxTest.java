@@ -26,7 +26,7 @@ public class TaxTest{
 	@Test
 	public void testTakePercentTax() {
 	
-		assertEquals(penge.TakePercentTax(lars), 3000);
+		assertEquals(penge.takePercentTax(lars), 3000);
 		assertEquals(lars.getAccount().getBalance(),27000);
 	}
 
