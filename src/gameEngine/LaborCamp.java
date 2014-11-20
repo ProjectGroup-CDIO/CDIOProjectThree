@@ -2,11 +2,16 @@ package gameEngine;
 
 public class LaborCamp extends Ownable {
 	
-	private int baseRent;
-	
-	public LaborCamp(String fieldName, Player owner, int price, int baseRent) {
-		super(fieldName, owner, price);
-		this.baseRent = baseRent; 
-	}
+	int baseRent;
 
+	//BaseRent defined 
+	public LaborCamp(String fieldName, Player ownerOfCurrentField, int faceValue){
+		super(fieldName, faceValue, ownerOfCurrentField, faceValue);
+		this.baseRent = faceValue*100;
+	}
+	//Withdraws BaseRent from player who lands on the field, and deposits BaseRent to player who owns the field
+	public void completeBaseRent(Player ownerOfCurrentField, Player playerWhoLandedOnCurrentField){
+		playerWhoLandedOnCurrentField.getAccount().withdraw(baseRent);
+		ownerOfCurrentField.getAccount().deposit(baseRent);
+	}
 }
