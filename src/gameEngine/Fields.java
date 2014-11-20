@@ -3,10 +3,12 @@ package gameEngine;
 public class Fields {
 	
 	String fieldName;
+	int fieldNumber;
 	
 	
-	public Fields(String fieldName) {
+	public Fields(String fieldName, int fieldNumber) {
 		this.fieldName = fieldName; 
+		this.fieldNumber = fieldNumber; 
 	}
 	
 	public static void landOnField(Player player) {
