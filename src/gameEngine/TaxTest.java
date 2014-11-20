@@ -5,15 +5,17 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TaxTest {
+public class TaxTest{
 
+	Player Lars;
 	@Before
 	public void setUp() throws Exception {
+	Lars = new Player("Lars");
 	}
 
 	@Test
 	public void testTakeBaseTax() {
-		fail("Not yet implemented");
+	
 	}
 
 	@Test

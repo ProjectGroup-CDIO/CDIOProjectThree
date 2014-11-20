@@ -19,6 +19,7 @@ public class Game {
 	//All the players are placed in an array
 	Player playerTurn[] = {player1,player2,player3,player4,player5,player6};
 	Language language = new Language(); 
+	
 
 	private boolean playerOne = true;
 	private boolean playerTwo = true;
@@ -77,10 +78,14 @@ public class Game {
 		//Dices to be rolled are created.
 		Die dieOne = new Die();
 		Die dieTwo = new Die();
+		
+		int turn = 0; //Variable used to determine which players turn it is.
+		int inactivePlayers  = 0; //Variable to check amount of inactive player
 
-		//adds player cars to the game
+		
 		n = 0; //Resest the variable used to run through the array
 		int color = 0;
+		//adds player cars to the game
 		while (n<=NumberOfPlayers-1){
 			Game.setTypeNameOne("Indtast navn for spiller 1");
 			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color,0,75);
@@ -88,8 +93,7 @@ public class Game {
 			color = color + 50;
 		}
 		
-		int turn = 0; //Variable used to determine which players turn it is.
-		int inactivePlayers  = 0; //Variable to check amount of inactive player
+		
 		n = 0; //Resest the variable used to run through the array
 		//Maximum amount of players that can be inactive
 		int MaxInactive = NumberOfPlayers - 1;
