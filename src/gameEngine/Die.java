@@ -9,7 +9,7 @@ public class Die
 	public int rollDie()
 	{
 		
-		faceValue = (int) (Math.random() * MAX) + 1;
+		faceValue = (int) (Math.random() * MAX) + 1 + (int) (Math.random() * MAX) + 1;
 		
 		return faceValue;
 	}
@@ -20,6 +20,11 @@ public class Die
 
 	public void setFaceValue(int faceValue) {
 		this.faceValue = faceValue;
+	}
+	
+	public int lastRoll(){
+		lastRoll = faceValue;
+		return lastRoll;
 	}
 }
 
