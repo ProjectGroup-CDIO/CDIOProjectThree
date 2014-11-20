@@ -2,7 +2,8 @@ package gameEngine;
 
 public class Player {
 	
-	String name;
+	private String name;
+	private int fleetsOwned;
 	
 	private Account playerAcc = new Account(); 
 	
