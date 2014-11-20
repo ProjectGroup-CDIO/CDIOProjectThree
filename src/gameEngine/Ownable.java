@@ -30,6 +30,14 @@ public class Ownable extends Fields {
 		this.owner = null;
 	}
 	
+	public String getFieldName() {
+		return fieldName; 
+	}
+	
+	public int getFieldNumber() {
+		return fieldNumber;
+	}
+	
 	public void setPrice(int price) {
 		this.price = price; 
 	}
@@ -48,5 +56,9 @@ public class Ownable extends Fields {
 	
 	public boolean isBuyable() {
 		return owner == null;
+	}
+	
+	public int getRent() {
+		//to be continued
 	}
 }
