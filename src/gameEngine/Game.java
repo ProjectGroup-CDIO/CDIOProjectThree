@@ -2,29 +2,43 @@
 package gameEngine;
 
 import javax.swing.JOptionPane;
+
 import boundaryToMatador.GUI;
 import boundaryToMatador.Car; //in order to create a custom car
+
 import java.awt.Color; //in order to change color of the car 
 
 public class Game {
 
-	private boolean playerOneVic = false;
-	private boolean playerTwoVic = false;
-	private boolean playerOneLoss = false;
-	private boolean playerTwoLoss = false;
-
 	Player player1 = new Player("PlayerOne");
 	Player player2 = new Player("PlayerTwo");
-	
+	Player player3 = new Player("PlayerThree");
+	Player player4 = new Player("PlayerFour");
+	Player player5 = new Player("PlayerFive");
+	Player player6 = new Player("PlayerSix");
+	//All the players are placed in an array
+	Player playerTurn[] = {player1,player2,player3,player4,player5,player6};
 	Language language = new Language(); 
 
 	private boolean playerOne = true;
-	private boolean playerTwo = false;
+	private boolean playerTwo = true;
+	private boolean playerThree = true;
+	private boolean playerFour = true;
+	private boolean playerFive = true;
+	private boolean playerSix = true;
+	private boolean activePlayers[]={playerOne,playerTwo,playerThree,playerFour,playerFive,playerSix};
 	private boolean game = true;
 
 	//Language used in the code, will be changed by the language setting.
 	private static String typeNameOne = ""; 
 	private static String typeNameTwo = "";
+	private static String typeNameThree = ""; 
+	private static String typeNameFour = "";
+	private static String typeNameFive = ""; 
+	private static String typeNameSix = "";
+	//All typeNames have been placed in an array
+	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
+	
 	private static String rollDice = "";
 	private static String won = "";
 	private static String isWinner = "";
@@ -33,26 +47,29 @@ public class Game {
 
 
 	public void game(){
-		//variables created for storing the users names for the game
-		String playerOneName = ""; 
-		String playerTwoName = ""; 
-		//The choices of languages that can be used
-		String[] choices = { "English", "Dansk", "Deutsch"};
-		//Selection box in which the user has to choose language
-		String input = (String) JOptionPane.showInputDialog(null, "Choose language:",
+		//variables created for storing the users names for the game in an array
+		//With only a Max amount of 6 players, the len of the array is only 6
+		String playerNames[] = {"","","","","",""};
+		
+		//The choice of amount of players
+		String[] amount = { "2", "3", "4","5","6"};
+		//Selection box in which amount of players
+		String players = (String) JOptionPane.showInputDialog(null, "Choose amount of players:",
 				"The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
-				choices, 
-				choices[1]); 
-
-		//System.out.println(input);
+				amount, 
+				amount[0]); //Default choice is 2 players
+		int NumberOfPlayers = Integer.parseInt(players);
 
 		//language selection, changes variables and sets the game board language.
-		language.languageSelection(input);
+		language.languageSelection("English");
 
 
 		//User names are prompted from the users, and store in previous variables
-		playerOneName = GUI.getUserString(typeNameOne);
-		playerTwoName = GUI.getUserString(typeNameTwo);
+		int n = 0; //Variable used to run through the array
+		while (n<=NumberOfPlayers-1){
+			playerNames[n]= GUI.getUserString(typeNames[n]);
+			n++;
+		}
 
 		//variable used to store the button pressed value
 		String i = "";
@@ -61,12 +78,49 @@ public class Game {
 		Die dieOne = new Die();
 		Die dieTwo = new Die();
 
-		//adds player cars to the
-		GUI.addPlayer(playerTwoName, player2.getAccount().getBalance(), 255, 255, 255); //last three arguments are RGB-color
-		GUI.addPlayer(playerOneName, player1.getAccount().getBalance(), 0, 0, 0);	    
-
-
+		//adds player cars to the game
+		n = 0; //Resest the variable used to run through the array
+		int color = 0;
+		while (n<=NumberOfPlayers-1){
+			Game.setTypeNameOne("Indtast navn for spiller 1");
+			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color,0,75);
+			n++;
+			color = color + 50;
+		}
+		
+		int turn = 0; //Variable used to determine which players turn it is.
+		int inactivePlayers  = 0; //Variable to check amount of inactive player
+		n = 0; //Resest the variable used to run through the array
+		//Maximum amount of players that can be inactive
+		int MaxInactive = NumberOfPlayers - 1;
 		while(game) {
+			//Checks how many players have lost
+			while (n <= NumberOfPlayers - 1){
+				if (activePlayers[n]!=true){
+					inactivePlayers++;//Increments in case of a player who have lost
+				}
+				System.out.println(n+" and "+NumberOfPlayers+" and "+inactivePlayers);
+				n++;
+			}
+			//Checks if the players have already lost. If so, next players turn
+			if (activePlayers[turn]!=true){
+				turn++;
+				if (turn>NumberOfPlayers-1){
+					turn=0;
+				}
+				continue;
+			}
+			//Terminates the game if all except one have lost
+			if (inactivePlayers==MaxInactive){
+				game=false;
+				break;
+			}
+			//Resets in case of new turn
+			else if(inactivePlayers!=MaxInactive){
+				inactivePlayers  = 0;
+				n = 0;
+			}
+			
 			//user prompted button, when pressed the value of rollDice is stored in i.
 			i = GUI.getUserButtonPressed(null, rollDice);
 			
@@ -76,63 +130,34 @@ public class Game {
 				int trow=dieOne.getFaceValue()+dieTwo.getFaceValue();
 				GUI.setDice(dieOne.getFaceValue(), dieTwo.getFaceValue());
 
-				if(playerOne) {
-					GUI.removeAllCars(playerOneName);//Removes the player from the board. Only used in case of trow == 10, as the car would have otherwise been removed on playerTwos turn
-					GUI.setCar(1, playerOneName);//Sets the player at Start (field1)
-					GUI.removeAllCars(playerTwoName);//Resets the positions of the other player
-					GUI.setCar(1, playerTwoName);
-					GUI.removeCar(1, playerOneName); //Removes the car from Start
-					GUI.setCar(trow, playerOneName); //sets car at field corresponding to sum of faceValues
-					Fields.field(player1, trow, i);
-					GUI.setBalance(playerOneName, player1.getAccount().getBalance());
+				if(activePlayers[turn]) {
+					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board. Only used in case of trow == 10, as the car would have otherwise been removed on playerTwos turn
+					GUI.setCar(1, playerNames[turn]);//Sets the player at Start (field1)
+					GUI.removeCar(1, playerNames[turn]); //Removes the car from Start
+					GUI.setCar(trow, playerNames[turn]); //sets car at field corresponding to sum of faceValues
+					Fields.field(playerTurn[turn], trow, i);
+					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
 					//Sets the player to lose in case of 0 points
-					if(player1.getAccount().getBalance()==0){
-						playerOneLoss = true;
+					if(playerTurn[turn].getAccount().getBalance()==0){
+						activePlayers[turn] = false;
+						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
 						trow = 0; //In order for a player not to get an extra turn by trow==10, when player have reached 0 points
 					}
-					//Sets the player to win in case of >= 3000 points
-					if (player1.getAccount().getBalance()>=3000){
-						playerOneVic = true;
-					}
-					 
-				}
-
-				if(playerTwo) {
-					GUI.removeAllCars(playerOneName);
-					GUI.setCar(1, playerOneName);
-					GUI.removeAllCars(playerTwoName);
-					GUI.setCar(1, playerTwoName);
-					GUI.removeCar(1, playerTwoName);
-					GUI.setCar(trow, playerTwoName); 
-					Fields.field(player2, trow, i);
-					GUI.setBalance(playerTwoName, player2.getAccount().getBalance());
-					if(player2.getAccount().getBalance()==0){
-						playerTwoLoss = true;
-						trow = 0; //In order for a player not to get an extra turn by trow==10, when player have reached 0 points
-					}
-					if (player2.getAccount().getBalance()>=3000){
-						playerTwoVic = true;
-					}
-					if(playerOneVic || playerOneLoss || playerTwoVic || playerTwoLoss){
-						game = false;
+					//Next players turn
+					turn++;
+					//If turn is out of bounds. It is reset to 0
+					if (turn>NumberOfPlayers-1){
+						turn=0;
 					}
 				}
 				//The turn is not switched if a player rolls 10
 				if(trow==10){
 					continue;
 				}
-				else if(playerOne){
-					playerOne = false;
-					playerTwo = true;
-				}
-				else if(playerTwo){
-					playerOne = true;
-					playerTwo = false;
-				}
-
 			}
 
 		}
+		/*
 		if (game != true){
 			Car car = new Car.Builder()
 			.typeRacecar()
@@ -177,9 +202,9 @@ public class Game {
 				GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
 
 			}
-
+			
 		}
-
+		*/
 	}
 	
 	//Language Strings getters and setters
