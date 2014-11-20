@@ -7,20 +7,27 @@ import org.junit.Test;
 
 public class TaxTest{
 
-	Player Lars;
+	
+	Player lars;
+	Tax penge;
 	@Before
 	public void setUp() throws Exception {
-	Lars = new Player("Lars");
+	lars = new Player("Lars");
+	penge = new Tax("abc", 0, 2000, 10);
 	}
 
 	@Test
-	public void testTakeBaseTax() {
+	public void testTakeBaseTax() {	
+	assertEquals(penge.takeBaseTax(lars),2000);
+	assertEquals(lars.getAccount().getBalance(),28000);
 	
 	}
 
 	@Test
 	public void testTakePercentTax() {
-		fail("Not yet implemented");
+	
+		assertEquals(penge.TakePercentTax(lars), 3000);
+		assertEquals(lars.getAccount().getBalance(),27000);
 	}
 
 }
