@@ -1,5 +1,7 @@
 package gameEngine;
 
+import javax.swing.JOptionPane;
+
 public class Tax extends Fields{
 	
 	private int baseTax;
@@ -9,17 +11,20 @@ public class Tax extends Fields{
 		super(fieldName, fieldNumber);
 		baseTax = baseTaxInput;
 		percentTax = PercentTaxInput;
-	}
 		
-		/*
+		//skal muligvis ind i main.
 		//player choose button press
-		String[] amount = {"Pay the base tax" + baseTax,"Pay the percent tax of "+percentTax};
+		String[] amount = {"Pay the base tax" + baseTax ,"Pay the percent tax of " + percentTax};
 		String taxChoice = (String) JOptionPane.showInputDialog(null, "Choose to pay base tax of " + baseTax + " or option 2 which is "+ percentTax,
 				"Tax choose!!!", JOptionPane.QUESTION_MESSAGE, null,
 				amount, 
 				amount[1]); //Default choice is 1 which is pay baseTax;
+	}
 		
 		
+	
+		
+		/*
 		if(taxChoice =="Pay the base tax"){
 			takeBaseTax();
 			
