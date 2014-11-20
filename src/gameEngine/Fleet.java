@@ -1,17 +1,16 @@
 package gameEngine;
 
-public class Fleet {
-	public static void main(String[] args) {
-
+public class Fleet extends Ownable {
 		
-	int[] fleetValue;
+	public Fleet(String fieldName, int fieldNumber, Player owner, int price, int fleetValue) {
+		super(fieldName, fieldNumber, owner, price);
+	}
 	
-	fleetValue = new int[4];
+	final int RENT_1 = 500;
+	final int RENT_2 = 1000;
+	final int RENT_3 = 2000;
+	final int RENT_4 = 4000;
 	
-	fleetValue[0] = 500;
-	fleetValue[1] = 1000;
-	fleetValue[2] = 2000;
-	fleetValue[3] = 4000;
 	
 }
-}
+
