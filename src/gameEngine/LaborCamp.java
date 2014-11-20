@@ -2,8 +2,14 @@ package gameEngine;
 
 public class LaborCamp extends Ownable {
 	
+	 /**
+	 * @param fieldName Name of the field in "use"
+	 * @param ownerOfCurrentField Name of the player who owns the currently used field
+	 * @param faceValue The value of the dice
+	 */
+	
 	int baseRent;
-
+	
 	//BaseRent defined 
 	public LaborCamp(String fieldName, Player ownerOfCurrentField, int faceValue){
 		super(fieldName, faceValue, ownerOfCurrentField, faceValue);
