@@ -1,8 +1,15 @@
 package gameEngine;
 
 public class Fleet extends Ownable {
-
-	public Fleet(String fieldName, int fieldNumber, Player owner, int price, int fleetValue, Player howLandOnField) {
+/**
+ * 
+ * @param fieldName The name of the field.
+ * @param fieldNumber Number of the field. 
+ * @param owner The owner of the field.
+ * @param price the price of the field.
+ * @param whoLandOnField who landed on the field.
+ */
+	public Fleet(String fieldName, int fieldNumber, Player owner, int price, Player whoLandOnField) {
 		super(fieldName, fieldNumber, owner, price);
 	}
 	
@@ -27,10 +34,6 @@ public class Fleet extends Ownable {
 			
 			
 		}
-//		public void landOnField(Player playerWhoLandedOnField) {
-//			super.getOwner().getAccount().deposit(getFleetRent());
-//			playerWhoLandedOnField.getAccount().withdraw(getFleetRent());
-//		}
 	}
 
 	@Override
@@ -45,17 +48,6 @@ public class Fleet extends Ownable {
 		player.getAccount().withdraw(getFleetRent());
 	
 	}
-	
-	
-//	
-//	public getFleetPrice(Player owner){
-//		if (owner.getFleetsOwned()==1){
-//			return RENT_1;
-//		}
-//	}
-//	
-//	public void landOnFleet();
-//	
-	
+
 }
 
