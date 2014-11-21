@@ -2,7 +2,7 @@ package gameEngine;
 
 public class GameBoard {
 	
-	Fields[] fields = new Fields[21]{
+	Fields[] fields = new Fields[]{
 		new Territory("Tribe Encampment", 1, 1000, 100),
 		new Territory("Crater", 2, 1500, 300),
 		new Territory("Mountain", 3, 2000, 500), 
@@ -16,22 +16,13 @@ public class GameBoard {
 		new Territory("Castle", 11, 8000, 4000),
 		new Refuge("Walled City", 12, 5000), 
 		new Refuge("Monastery", 13, 500),
-		new LaborCamp()
-		;
-	
-//	field[0] = terr1;
-//	terr1 = new Territory("Tribe Encampment", 1, 1000, 100);
-//	
+		new LaborCamp("Huts in the Mountain", 14, 2500),
+		new LaborCamp("The Pit", 15, 2500),
+		new Tax("Goldmine", 16, 4000, 0), //Skal constructoren ændres?
+		new Tax("Caravan", 17, 4000, 10),
+		new Fleet("Second Sail", 18, 4000),
+		new Fleet("Sea Grover", 19, 4000),
+		new Fleet("The Buccaneers", 20, 4000),
+		new Fleet("Privateer Armade", 21, 4000)};
 }
-}
 
-
-
-
-
-
-//public Territory(String fieldName, int fieldNumber, int price, int rent) {
-//	super(fieldName, fieldNumber, owner, price);
-//	this.rent = rent;
-//}
-//	
