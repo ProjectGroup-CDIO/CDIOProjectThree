@@ -20,6 +20,7 @@ public class Die {
 
 	public void setFaceValue(int faceValue) {
 		this.faceValue = faceValue;
+		lastRoll = faceValue;
 	}
 	
 	public static int getLastRoll(){

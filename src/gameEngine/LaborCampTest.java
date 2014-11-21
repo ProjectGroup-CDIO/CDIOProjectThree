@@ -11,7 +11,8 @@ public class LaborCampTest {
 	Player owner;
 	Player guyWhoLandedonField;
 	Die diceRoll;
-	LaborCamp labor;
+	LaborCamp labor;	
+	Ownable ownable;
 	
 	//Initializing the above
 	@Before
@@ -19,14 +20,17 @@ public class LaborCampTest {
 		owner = new Player("Owner");
 		guyWhoLandedonField = new Player("Lander-Guy");
 		diceRoll = new Die();
-		labor = new LaborCamp("ACB", owner, diceRoll.rollDie());
+		labor = new LaborCamp("ACB", 3, 1000);
 	}
 	
 	//Tests if BaseRent is equal to what we expected: The facevalue of the dice*100,
-	//example: value of dice is 9, BaseRent is then = 900
+	//example: value of dice is 9, getRent() is then = 900
+	//Because of changes, the FaceValue is set to 30, resulting in getRent()=300
 	@Test
 	public void testLaborCamp() {
-		assertEquals(labor.baseRent,diceRoll.getFaceValue()*100);		
+		Die testDie = new Die();
+		testDie.setFaceValue(3);
+		assertEquals(labor.getRent(), 300);		
 	}
 
 	//Tests if BaseRent withdraws and deposits as we want it to
