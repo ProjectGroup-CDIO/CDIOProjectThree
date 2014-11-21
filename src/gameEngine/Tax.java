@@ -6,25 +6,20 @@ public class Tax extends Fields{
 	
 	private int baseTax;
 	private int percentTax;
-		
+	/**
+	 * 	
+	 * @param fieldName name of the field which is landed upon
+	 * @param fieldNumber number of the field in the game board
+	 * @param baseTaxInput The base tax amount 
+	 * @param PercentTaxInput The percentage that is taxed, value of 10 is recommended, divides players current balance with the number.
+	 */
 	public Tax(String fieldName, int fieldNumber, int baseTaxInput, int PercentTaxInput) {
 		super(fieldName, fieldNumber);
 		baseTax = baseTaxInput;
 		percentTax = PercentTaxInput;
 	}
-		
-		
 	
-		
-		/*
-		if(taxChoice =="Pay the base tax"){
-			takeBaseTax();
 			
-		}else if(){
-			
-		}
-		*/
-		
 		/**
 		 * 
 		 * @param PlayerWholandedontheField is needed to withdraw the money from his account
@@ -47,7 +42,13 @@ public class Tax extends Fields{
 			
 			return percentValueTaxed;
 		}
-
+		
+		
+		/*
+		 * This is the method activated when a field is landed upon. The methods prompts the user 
+		 * to make a choice, depending on the choice the player pays the given tax which is done by 
+		 * above methods.
+		 */
 		@Override
 		public void landOnField(Player player) {
 			//player choice called. This makes the player choose between his tax options
