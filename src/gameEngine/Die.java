@@ -7,6 +7,10 @@ public class Die {
 	private int faceValue2; //Shows current value of roll 2
 	private int lastRoll;
 	
+	/**
+	 * 
+	 * @return returns the total roll of both dices
+	 */
 	public int rollDie(){
 		
 		faceValue1 = (int) (Math.random() * MAX) + 1;

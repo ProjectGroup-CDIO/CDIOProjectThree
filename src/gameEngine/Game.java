@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 
 import boundaryToMatador.GUI;
 import boundaryToMatador.Car; //in order to create a custom car
+import gameEngine.GameBoard;
 
 import java.awt.Color; //in order to change color of the car 
 
@@ -44,10 +45,12 @@ public class Game {
 	private static String won = "";
 	private static String isWinner = "";
 	private static String draw = "";
-
+	
+	GameBoard lars = new GameBoard();
 
 
 	public void game(){
+	
 		//variables created for storing the users names for the game in an array
 		//With only a Max amount of 6 players, the len of the array is only 6
 		String playerNames[] = {"","","","","",""};
@@ -77,7 +80,6 @@ public class Game {
 
 		//Dices to be rolled are created.
 		Die dieOne = new Die();
-		Die dieTwo = new Die();
 		
 		int turn = 0; //Variable used to determine which players turn it is.
 		int inactivePlayers  = 0; //Variable to check amount of inactive player
@@ -130,16 +132,16 @@ public class Game {
 			
 			if(i.equals(rollDice)){
 				dieOne.rollDie();
-				dieTwo.rollDie();
-				int trow=dieOne.getFaceValue()+dieTwo.getFaceValue();
-				GUI.setDice(dieOne.getFaceValue(), dieTwo.getFaceValue());
+				
+				int trow=dieOne.getLastRoll();
+				GUI.setDice(dieOne.getFaceValue1(), dieOne.getFaceValue2());
 
 				if(activePlayers[turn]) {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board. Only used in case of trow == 10, as the car would have otherwise been removed on playerTwos turn
 					GUI.setCar(1, playerNames[turn]);//Sets the player at Start (field1)
 					GUI.removeCar(1, playerNames[turn]); //Removes the car from Start
 					GUI.setCar(trow, playerNames[turn]); //sets car at field corresponding to sum of faceValues
-					Fields.field(playerTurn[turn], trow, i);
+				//	Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
 					//Sets the player to lose in case of 0 points
 					if(playerTurn[turn].getAccount().getBalance()==0){
