@@ -16,7 +16,7 @@ public class Language {
 			Game.setIsWinner(" ER VINDEREN!!!");
 			Game.setDraw("SPILLET BLEV UAFGJORT");
 		}else if(input.equals("English")){
-			GUI.create("fields-English.txt");
+			GUI.create("fieldstext-cdio3.txt");
 			Game.setTypeNameOne("Enter name for player 1");
 			Game.setTypeNameTwo("Enter name for player 2");
 			Game.setRollDice("Roll Dice");
