@@ -16,7 +16,7 @@ public class Tax extends Fields{
 	 */
 
 	//private int percentTax; //Hvad med double = 0.1?
-	//SŒ skal jeg lige lege lidt med withdraw funktionen, men doubles ville v¾re smartere i l¾ngden
+	//Sï¿½ skal jeg lige lege lidt med withdraw funktionen, men doubles ville vï¿½re smartere i lï¿½ngden
 		
 	public Tax(String fieldName, int fieldNumber, int baseTaxInput, int PercentTaxInput) {
 		super(fieldName, fieldNumber);
@@ -34,7 +34,7 @@ public class Tax extends Fields{
 	
 			PlayerWholandedontheField.getAccount().withdraw(baseTax);
 			
-			return baseTax;
+			return baseTax; 
 		}
 		/**
 		 * 
