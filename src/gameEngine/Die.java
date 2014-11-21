@@ -5,7 +5,7 @@ public class Die {
 	private final int MAX = 6; //max value of die
 	private int faceValue1; //shows current value of roll 1
 	private int faceValue2; //Shows current value of roll 2
-	private int lastRoll;
+	private static int lastRoll;
 	
 	/**
 	 * 
@@ -35,7 +35,7 @@ public class Die {
 		this.faceValue2 = faceValue;
 	}
 	
-	public int getLastRoll(){
+	public static int getLastRoll(){
 		return lastRoll;
 	}
 }
