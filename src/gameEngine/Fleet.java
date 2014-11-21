@@ -5,19 +5,23 @@ public class Fleet extends Ownable {
  * 
  * @param fieldName The name of the field.
  * @param fieldNumber Number of the field. 
- * @param owner The owner of the field.
  * @param price the price of the field.
- * @param whoLandOnField who landed on the field.
  */
-	public Fleet(String fieldName, int fieldNumber, Player owner, int price, Player whoLandOnField) {
-		super(fieldName, fieldNumber, owner, price);
+	public Fleet(String fieldName, int fieldNumber, int price) {
+		super(fieldName, fieldNumber, price);
 	}
-	
+	/*
+	 * The Value of the amount of fleet you own. RENt_1 = you own 1 Fleet RENT_2 = you own 2 ect.
+	 */
 	final int RENT_1 = 500;
 	final int RENT_2 = 1000;
 	final int RENT_3 = 2000;
 	final int RENT_4 = 4000;
 
+	/*
+	 * (non-Javadoc)
+	 * @see gameEngine.Ownable#getRent() A switch made over the value of RENT_1 to RENT_4.
+	 */
 	@Override
 	public int getRent(){
 		switch (super.getOwner().getFleetsOwned()){
@@ -36,6 +40,10 @@ public class Fleet extends Ownable {
 		}
 	}
 
+	/*
+	 *(non-Javadoc)
+	 * @see gameEngine.Fields#landOnField(gameEngine.Player) Use the metod soo the money can withdraw from the player how landed on the Fleet field and diposit to the owner of the fleet
+	 */
 	@Override
 	public void landOnField(Player player) {
 		super.getOwner().getAccount().deposit(getRent());
