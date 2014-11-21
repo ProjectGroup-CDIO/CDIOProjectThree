@@ -29,7 +29,7 @@ public class LaborCampTest {
 	@Test
 	public void testLaborCamp() {
 		Die testDie = new Die();
-		testDie.setFaceValue(3);
+		testDie.setLastRoll(3);
 		assertEquals(labor.getRent(), 300);		
 	}
 

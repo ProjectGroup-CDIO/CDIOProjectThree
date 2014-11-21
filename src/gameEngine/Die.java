@@ -35,6 +35,9 @@ public class Die {
 		this.faceValue2 = faceValue;
 	}
 	
+	public void setLastRoll(int roll){
+		lastRoll = roll;
+	}
 	public static int getLastRoll(){
 		return lastRoll;
 	}
