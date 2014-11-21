@@ -26,7 +26,7 @@ public class LaborCamp extends Ownable {
 	
 	@Override
 	public int getRent() {
-		
+		return baseRent * Die.getLastRoll();
 	}
 
 	@Override
