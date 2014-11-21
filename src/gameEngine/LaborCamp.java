@@ -8,7 +8,7 @@ public class LaborCamp extends Ownable {
 	 * @param faceValue The value of the dice
 	 */
 	
-	int baseRent = 100;
+	private int baseRent = 100;
 	
 	//BaseRent defined 
 	public LaborCamp(String fieldName, int fieldNumber, int price){ //Har fjernet faceValue fra constructor

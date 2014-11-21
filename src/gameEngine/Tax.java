@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class Tax extends Fields{
 	
 	private int baseTax;
-	private int percentTax;
+	private int percentTax; //Hvad med double = 0.1?
 		
 	public Tax(String fieldName, int fieldNumber, int baseTaxInput, int PercentTaxInput) {
 		super(fieldName, fieldNumber);

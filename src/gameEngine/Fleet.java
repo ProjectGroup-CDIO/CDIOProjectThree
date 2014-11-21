@@ -9,8 +9,8 @@ public class Fleet extends Ownable {
  * @param price the price of the field.
  * @param whoLandOnField who landed on the field.
  */
-	public Fleet(String fieldName, int fieldNumber, Player owner, int price, Player whoLandOnField) {
-		super(fieldName, fieldNumber, owner, price);
+	public Fleet(String fieldName, int fieldNumber, int price) {
+		super(fieldName, fieldNumber, price);
 	}
 	
 	final int RENT_1 = 500;
