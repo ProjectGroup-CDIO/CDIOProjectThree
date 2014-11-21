@@ -1,17 +1,17 @@
 package gameEngine;
 
-public class Die 
-{
-	int lastRoll;
+public class Die {
+	
 	private final int MAX = 6; //max value of die
 	private int faceValue; //shows current value of die
+	private static int lastRoll;
 	
-	public int rollDie()
-	{
+	public int rollDie(){
 		
-		faceValue = (int) (Math.random() * MAX) + 1 + (int) (Math.random() * MAX) + 1;
-		
+		faceValue = (int) (Math.random() * MAX) + 1 + (int) (Math.random() * MAX) + 1;	
+		lastRoll = faceValue;		
 		return faceValue;
+		
 	}
 
 	public int getFaceValue() {
@@ -22,8 +22,7 @@ public class Die
 		this.faceValue = faceValue;
 	}
 	
-	public int lastRoll(){
-		lastRoll = faceValue;
+	public static int getLastRoll(){
 		return lastRoll;
 	}
 }
