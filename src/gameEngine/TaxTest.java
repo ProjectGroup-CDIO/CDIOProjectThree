@@ -34,7 +34,7 @@ public class TaxTest{
 		penge.landOnField(lars);
 		assertEquals(lars.getAccount().getBalance(),28000);
 	
-		
+		 
 	}
 	@Test
 	public void testlandOnField2(){
