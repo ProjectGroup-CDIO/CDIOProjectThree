@@ -32,8 +32,8 @@ public class LaborCamp extends Ownable {
 	@Override
 	public void landOnField(Player playerWhoLandedOnField) { //Hvordan får man implementeret terningkastet i en abstract method, når der ikke må ændres på parameterne?
 		
-		playerWhoLandedOnField.getAccount().withdraw(baseRent);
-		super.getOwner().getAccount().deposit(baseRent);
+		playerWhoLandedOnField.getAccount().withdraw(getRent());
+		super.getOwner().getAccount().deposit(getRent());
 		
 		
 	}
