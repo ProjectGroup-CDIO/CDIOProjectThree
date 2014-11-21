@@ -18,11 +18,13 @@ public class GameBoard {
 		new Refuge("Monastery", 13, 500),
 		new LaborCamp("Huts in the Mountain", 14, 2500),
 		new LaborCamp("The Pit", 15, 2500),
-		new Tax("Goldmine", 16, 4000, 0), //Skal constructoren ændres?
+		new Tax("Goldmine", 16, 4000, 0), //Skal constructoren ændres? Der er ingen percent tax på Goldmine
 		new Tax("Caravan", 17, 4000, 10),
 		new Fleet("Second Sail", 18, 4000),
 		new Fleet("Sea Grover", 19, 4000),
 		new Fleet("The Buccaneers", 20, 4000),
-		new Fleet("Privateer Armade", 21, 4000)};
+		new Fleet("Privateer Armade", 21, 4000)
+		};
+	
 }
 
