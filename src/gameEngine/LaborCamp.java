@@ -24,12 +24,8 @@ public class LaborCamp extends Ownable {
 		playerWhoLandedOnCurrentField.getAccount().withdraw(getRent());
 		ownerOfCurrentField.getAccount().deposit(getRent());
 	}
-	
-	public int getRent(int faceValue) {
-		return baseRent * faceValue; 
-	}
-	
-	
+
+
 	public int getRent() {
 		return baseRent * Die.getLastRoll();
 	}

@@ -15,6 +15,10 @@ public class Territory extends Ownable {
 		super(fieldName, fieldnumber, price);
 		this.rent = rent;
 	}
+	/**
+	 * 
+	 * @param lander Player who lands on the field.
+	 */
 	
 	public void buyProperty(Player lander){
 		super.setOwner(lander);
@@ -28,13 +32,9 @@ public class Territory extends Ownable {
 	 */
 	
 	public void completeRent(Player owner, Player lander){
-		if (super.getOwner() != null){
+		
 			lander.getAccount().withdraw(getRent());
 			owner.getAccount().deposit(getRent());
-		}
-		else{
-			buyProperty(lander);
-		}
 		
 	}
 
