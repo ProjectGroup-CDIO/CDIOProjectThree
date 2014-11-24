@@ -151,7 +151,6 @@ public class Game {
 					if(playerTurn[turn].getAccount().getBalance()==0){
 						activePlayers[turn] = false;
 						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
-						trow = 0; //In order for a player not to get an extra turn by trow==10, when player have reached 0 points
 					}
 					//Next players turn
 					turn++;
@@ -159,10 +158,6 @@ public class Game {
 					if (turn>NumberOfPlayers-1){
 						turn=0;
 					}
-				}
-				//The turn is not switched if a player rolls 10
-				if(trow==10){
-					continue;
 				}
 			}
 
