@@ -107,7 +107,6 @@ public class Game {
 				if (activePlayers[n]!=true){
 					inactivePlayers++;//Increments in case of a player who have lost
 				}
-				System.out.println(n+" and "+NumberOfPlayers+" and "+inactivePlayers);
 				n++;
 			}
 			//Checks if the players have already lost. If so, next players turn
@@ -133,23 +132,27 @@ public class Game {
 			i = GUI.getUserButtonPressed(null, rollDice);
 			
 			if(i.equals(rollDice)){
-				dieOne.rollDie();
 				
-				int trow=dieOne.getLastRoll();
+				
+				int trow=dieOne.rollDie();
 				GUI.setDice(dieOne.getFaceValue1(), dieOne.getFaceValue2());
 
 				if(activePlayers[turn]) {
-					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board. Only used in case of trow == 10, as the car would have otherwise been removed on playerTwos turn
+					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
+					playerTurn[turn].setCurrentPos(trow);
+					/*
 					GUI.setCar(1, playerNames[turn]);//Sets the player at Start (field1)
 					GUI.removeCar(1, playerNames[turn]); //Removes the car from Start
-					GUI.setCar(trow, playerNames[turn]); //sets car at field corresponding to sum of faceValues
-				//	Fields.field(playerTurn[turn], trow, i);
+					*/
+					
+					GUI.setCar(playerTurn[turn].getCurrentPos(), playerNames[turn]); //sets car at field corresponding to sum of faceValues
+				
+					//	Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
 					//Sets the player to lose in case of 0 points
 					if(playerTurn[turn].getAccount().getBalance()==0){
 						activePlayers[turn] = false;
 						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
-						trow = 0; //In order for a player not to get an extra turn by trow==10, when player have reached 0 points
 					}
 					//Next players turn
 					turn++;
@@ -157,10 +160,6 @@ public class Game {
 					if (turn>NumberOfPlayers-1){
 						turn=0;
 					}
-				}
-				//The turn is not switched if a player rolls 10
-				if(trow==10){
-					continue;
 				}
 			}
 
