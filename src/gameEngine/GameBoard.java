@@ -3,6 +3,7 @@ package gameEngine;
 public class GameBoard {
 	
 	Fields[] fields = new Fields[]{
+		new Tax("Start",1,0,0),
 		new Territory("Crater", 2, 1500, 300),
 		new Fleet("Second Sail", 3, 4000),
 		new Territory("Tower", 4, 6000, 3200),
