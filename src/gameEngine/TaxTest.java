@@ -13,7 +13,7 @@ public class TaxTest {
 	@Before
 	public void setUp() throws Exception {
 		playerTestLand = new Player("test1");
-		tax1 = new Tax("Caravan", 2);
+		tax1 = new Tax("Caravan", 2, 4000, 10);
 	}
 	
 	@Test

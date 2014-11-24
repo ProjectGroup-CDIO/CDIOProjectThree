@@ -22,6 +22,7 @@ public class Fleet extends Ownable {
 	 * (non-Javadoc)
 	 * @see gameEngine.Ownable#getRent() A switch made over the value of RENT_1 to RENT_4.
 	 */
+	
 	@Override
 	public int getRent(){
 		switch (super.getOwner().getFleetsOwned()){
@@ -45,19 +46,20 @@ public class Fleet extends Ownable {
 		player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
 		super.getOwner().incrementFleetsOwned();//Adds one to the fleets owned under player.
 	}
+	
 	/*
 	 *(non-Javadoc)
 	 * @see gameEngine.Fields#landOnField(gameEngine.Player) Use the metod soo the money can withdraw from the player how landed on the Fleet field and diposit to the owner of the fleet
 	 */
+	
 	@Override
-	
-	
 	public void landOnField(Player player) {
-		if (super.getOwner() != null){//Hvis der er en ejer af den fleet man lander på, betaler man leje
+		//Hvis der er en ejer af den fleet man lander på, betaler man leje
+		if (super.getOwner() != null){
 			super.getOwner().getAccount().deposit(getRent());
 			player.getAccount().withdraw(getRent());
 		}
-		else {//Hvis der ikke er nogen ejer at den fleet man har landet på, køber man fleet'en
+		else {//Hvis der ikke er nogen ejer at den fleet man har landet pï¿½, kï¿½ber man fleet'en
 			buyProperty(player);
 		}
 	}
