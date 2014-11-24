@@ -4,7 +4,15 @@ public class Player {
 	
 	private String name;
 	private int fleetsOwned = 0;
+	private int currentPos = 0;
 	
+	public int getCurrentPos() {
+		return currentPos;
+	}
+
+	public void setCurrentPos(int throwValue) {
+		this.currentPos = currentPos + throwValue;
+	}
 	private Account playerAcc = new Account(); 
 	
 	public Player(String name) {
