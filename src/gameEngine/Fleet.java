@@ -39,16 +39,27 @@ public class Fleet extends Ownable {
 				
 		}
 	}
-
+	//Her købes der en fleet
+	public void buyProperty(Player player){
+		super.setOwner(player);//Sætter spilleren til at være ejer at fleet'en
+		player.getAccount().withdraw(getPrice());//Trækker penge fra spilleren. Så spilleren kan købe fleet'en
+		super.getOwner().getFleetsOwned();//Addere en til spillerens nuværende mængde af fleets
+	}
 	/*
 	 *(non-Javadoc)
 	 * @see gameEngine.Fields#landOnField(gameEngine.Player) Use the metod soo the money can withdraw from the player how landed on the Fleet field and diposit to the owner of the fleet
 	 */
 	@Override
-	public void landOnField(Player player) {
-		super.getOwner().getAccount().deposit(getRent());
-		player.getAccount().withdraw(getRent());
 	
+	
+	public void landOnField(Player player) {
+		if (player != null){//Hvis der er en ejer af den fleet man lander på, betaler man leje
+			super.getOwner().getAccount().deposit(getRent());
+			player.getAccount().withdraw(getRent());
+		}
+		else {//Hvis der ikke er nogen ejer at den fleet man har landet på, køber man fleet'en
+			buyProperty(player);
+		}
 	}
 
 }

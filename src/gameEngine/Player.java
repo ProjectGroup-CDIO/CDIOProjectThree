@@ -39,8 +39,8 @@ public class Player {
 	public int getFleetsOwned(){
 		return fleetsOwned;
 	}
-	public void setFleetsOwned(int fleetsOwned){
-		this.fleetsOwned = fleetsOwned;
+	public void setFleetsOwned(){
+		this.fleetsOwned = this.fleetsOwned + 1;
 	}
 
 }
