@@ -7,8 +7,8 @@ public class Player {
 	private int currentPos = 0;
 	
 	public int getCurrentPos() {
-		if(currentPos > 22){
-		currentPos = currentPos - 22;
+		if(currentPos > 21){
+		currentPos = currentPos - 21;
 		}		
 			return currentPos;
 		}
