@@ -22,6 +22,7 @@ public class Territory extends Ownable {
 	
 	public void buyProperty(Player lander){
 		super.setOwner(lander);
+		System.out.println(getPrice());
 		lander.getAccount().withdraw(getPrice());
 	}
 	

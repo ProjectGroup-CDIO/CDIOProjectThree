@@ -141,7 +141,7 @@ public class Game {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
 					playerTurn[turn].setCurrentPos(trow);
 					//sets car at field corresponding to the value of the players position
-					GUI.setCar(playerTurn[turn].getCurrentPos(), playerNames[turn]);
+					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
 					System.out.println(playerTurn[turn].getCurrentPos());
 					
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
