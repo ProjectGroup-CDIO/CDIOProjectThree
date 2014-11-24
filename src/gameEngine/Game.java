@@ -105,7 +105,6 @@ public class Game {
 				if (activePlayers[n]!=true){
 					inactivePlayers++;//Increments in case of a player who have lost
 				}
-				System.out.println(n+" and "+NumberOfPlayers+" and "+inactivePlayers);
 				n++;
 			}
 			//Checks if the players have already lost. If so, next players turn
@@ -131,9 +130,9 @@ public class Game {
 			i = GUI.getUserButtonPressed(null, rollDice);
 			
 			if(i.equals(rollDice)){
-				dieOne.rollDie();
 				
-				int trow=dieOne.getLastRoll();
+				
+				int trow=dieOne.rollDie();
 				GUI.setDice(dieOne.getFaceValue1(), dieOne.getFaceValue2());
 
 				if(activePlayers[turn]) {
