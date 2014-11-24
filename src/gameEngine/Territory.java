@@ -8,9 +8,19 @@ public class Territory extends Ownable {
 		super(fieldName, fieldnumber, price);
 		this.rent = rent;
 	}
+	public void buyProperty(Player lander){
+		super.setOwner(lander);
+		lander.getAccount().withdraw(getPrice());
+	}
 	public void completeRent(Player owner, Player lander){
-		lander.getAccount().withdraw(getRent());
-		owner.getAccount().deposit(getRent());
+		if (super.getOwner() != null){
+			lander.getAccount().withdraw(getRent());
+			owner.getAccount().deposit(getRent());
+		}
+		else{
+			buyProperty(lander);
+		}
+		
 	}
 
 	/**
