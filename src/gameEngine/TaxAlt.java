@@ -4,29 +4,48 @@ import javax.swing.JOptionPane;
 
 public class TaxAlt extends Fields {
 	
-	private int baseTaxCaravan = 4000;
-	private int baseTaxGoldmine = 2000;
-	private double percentTaxCaravan = 0.1;  
 	
-	public TaxAlt(String fieldName, int fieldNumber) {
+	private int baseTax;
+	private double percentTax;  
+	
+//	public TaxAlt(String fieldName, int fieldNumber) {
+//		super(fieldName, fieldNumber);
+//	}
+	
+	/**
+	 * Constructs a field of type Tax
+	 * @param fieldName name of field
+	 * @param fieldNumber number of field on the game board
+	 * @param baseTax Base tax
+	 * @param percentTax Percent tax in who numbers. i.e. 10% is 10.
+	 */
+	public TaxAlt(String fieldName, int fieldNumber, int baseTax, int percentTax) {
 		super(fieldName, fieldNumber);
+		this.baseTax = baseTax;
+		this.percentTax = percentTax; 
 	}
 
 	public int getBaseTaxCaravan() {
-		return baseTaxCaravan;
+		return baseTax;
 	}
 
 	public double getPercentTaxCaravan() {
-		return percentTaxCaravan;
+		return percentTax;
 	}
 	
 	public int getBaseTaxGoldmine() {
-		return baseTaxGoldmine; 
+		return baseTax; 
 	}
 	
+	/**
+	 * Withdraws the amount corresponding to the Labor Camp field.
+	 * On the Caravan Labor Camp field, the player is prompted whether he wants to pay 10% or 4000
+	 * @param playerWhoLanded The player who landed on the field
+	 */
+	
 	public void landOnField(Player playerWhoLanded) {
-		if(fieldName == "Goldmine") {
-			playerWhoLanded.getAccount().withdraw(baseTaxGoldmine);
+		if(percentTax == 0) {
+			playerWhoLanded.getAccount().withdraw(baseTax);
 		}
 		else {
 			Object[] options = {
@@ -41,11 +60,11 @@ public class TaxAlt extends Fields {
     options, 
     options[0]);
 			if(n == 0){
-				playerWhoLanded.getAccount().withdraw((int) (percentTaxCaravan * playerWhoLanded
+				playerWhoLanded.getAccount().withdraw((int) (percentTax * playerWhoLanded
 						.getAccount().getBalance()));
 			}
 			if(n == 1) {
-				playerWhoLanded.getAccount().withdraw(baseTaxCaravan);
+				playerWhoLanded.getAccount().withdraw(baseTax);
 			}
 		}
 	}
