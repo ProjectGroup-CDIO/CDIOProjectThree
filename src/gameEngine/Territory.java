@@ -4,11 +4,14 @@ public class Territory extends Ownable {
 	
 	private int rent; 
 	
-	public Territory(String fieldName, int fieldNumber, int price, int rent) {
-		super(fieldName, fieldNumber, price);
+	public Territory(String fieldName, int fieldnumber, int price, int rent) {
+		super(fieldName, fieldnumber, price);
 		this.rent = rent;
 	}
-		
+	public void completeRent(Player owner, Player lander){
+		lander.getAccount().withdraw(getRent());
+		owner.getAccount().deposit(getRent());
+	}
 
 	/**
 	 *Withdraws the points from the lander and deposits them to the owner
