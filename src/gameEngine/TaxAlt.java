@@ -4,24 +4,29 @@ import javax.swing.JOptionPane;
 
 public class TaxAlt extends Fields {
 	
-	private int baseTax = 4000;
-	private double percentTax = 0.1;  
+	private int baseTaxCaravan = 4000;
+	private int baseTaxGoldmine = 2000;
+	private double percentTaxCaravan = 0.1;  
 	
 	public TaxAlt(String fieldName, int fieldNumber) {
 		super(fieldName, fieldNumber);
 	}
 
-	public int getBaseTax() {
-		return baseTax;
+	public int getBaseTaxCaravan() {
+		return baseTaxCaravan;
 	}
 
-	public double getPercentTax() {
-		return percentTax;
+	public double getPercentTaxCaravan() {
+		return percentTaxCaravan;
+	}
+	
+	public int getBaseTaxGoldmine() {
+		return baseTaxGoldmine; 
 	}
 	
 	public void landOnField(Player playerWhoLanded) {
 		if(fieldName == "Goldmine") {
-			playerWhoLanded.getAccount().withdraw(baseTax);
+			playerWhoLanded.getAccount().withdraw(baseTaxGoldmine);
 		}
 		else {
 			Object[] options = {
@@ -36,11 +41,11 @@ public class TaxAlt extends Fields {
     options, 
     options[0]);
 			if(n == 0){
-				playerWhoLanded.getAccount().withdraw((int) (percentTax * playerWhoLanded
+				playerWhoLanded.getAccount().withdraw((int) (percentTaxCaravan * playerWhoLanded
 						.getAccount().getBalance()));
 			}
 			if(n == 1) {
-				playerWhoLanded.getAccount().withdraw(4000);
+				playerWhoLanded.getAccount().withdraw(baseTaxCaravan);
 			}
 		}
 	}
