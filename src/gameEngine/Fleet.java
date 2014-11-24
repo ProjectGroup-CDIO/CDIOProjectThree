@@ -43,7 +43,7 @@ public class Fleet extends Ownable {
 	public void buyProperty(Player player){
 		super.setOwner(player);//Sætter spilleren til at være ejer at fleet'en
 		player.getAccount().withdraw(getPrice());//Trækker penge fra spilleren. Så spilleren kan købe fleet'en
-		super.getOwner().getFleetsOwned();//Addere en til spillerens nuværende mængde af fleets
+		super.getOwner().incrementFleetsOwned();//Addere en til spillerens nuværende mængde af fleets
 	}
 	/*
 	 *(non-Javadoc)

@@ -40,8 +40,14 @@ public class Territory extends Ownable {
 
 	@Override
 	public void landOnField( Player lander){
-		lander.getAccount().withdraw(rent);
-		super.getOwner().getAccount().deposit(rent);
+		if (super.getOwner() != null){
+			lander.getAccount().withdraw(rent);
+			super.getOwner().getAccount().deposit(rent);	
+		}
+		else{
+			buyProperty(lander);
+		}
+		
 	}
 	@Override
 	public int getRent() {
