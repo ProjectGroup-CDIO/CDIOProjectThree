@@ -46,8 +46,8 @@ public class Game {
 	private static String isWinner = "";
 	private static String draw = "";
 	
-	GameBoard lars = new GameBoard();
-
+	GameBoard currentBoard = new GameBoard();
+ 
 
 	public void game(){
 	
@@ -140,10 +140,10 @@ public class Game {
 				if(activePlayers[turn]) {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
 					playerTurn[turn].setCurrentPos(trow);
-				
-					GUI.setCar(playerTurn[turn].getCurrentPos(), playerNames[turn]); //sets car at field corresponding to the value of the players poss
-				
-					//	Fields.field(playerTurn[turn], trow, i);
+					//sets car at field corresponding to the value of the players position
+					GUI.setCar(playerTurn[turn].getCurrentPos(), playerNames[turn]);
+					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
+					//Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
 					//Sets the player to lose in case of 0 points
 					if(playerTurn[turn].getAccount().getBalance()==0){

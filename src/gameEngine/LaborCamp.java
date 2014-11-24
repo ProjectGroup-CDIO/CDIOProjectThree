@@ -33,12 +33,24 @@ public class LaborCamp extends Ownable {
 	public int getRent() {
 		return baseRent * Die.getLastRoll();
 	}
-
+	/**
+	 * 
+	 * @param playerWhoLandedOnField The first player which lands on the field buys the property.
+	 * Missing so that if a player has insufficient funds he cant buy the field.
+	 */
+	public void buyProperty(Player playerWhoLandedOnField){
+		super.setOwner(playerWhoLandedOnField);
+		playerWhoLandedOnField.getAccount().withdraw(getPrice());
+	}
 
 	public void landOnField(Player playerWhoLandedOnField) { 
-		
-		playerWhoLandedOnField.getAccount().withdraw(getRent());
-		super.getOwner().getAccount().deposit(getRent());
+		if(super.getOwner() != null){
+			playerWhoLandedOnField.getAccount().withdraw(getRent());
+			super.getOwner().getAccount().deposit(getRent());
+		}else{
+			buyProperty(playerWhoLandedOnField);	
+		}
+
 			
 	}
 }
