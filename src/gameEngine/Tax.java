@@ -8,10 +8,6 @@ public class Tax extends Fields {
 	private int baseTax;
 	private double percentTax;  
 	
-//	public TaxAlt(String fieldName, int fieldNumber) {
-//		super(fieldName, fieldNumber);
-//	}
-	
 	/**
 	 * Constructs a field of type Tax
 	 * @param fieldName name of field
@@ -19,6 +15,7 @@ public class Tax extends Fields {
 	 * @param baseTax Base tax
 	 * @param percentTax Percent tax in whole numbers. i.e. 10% is 10.
 	 */
+	
 	public Tax(String fieldName, int fieldNumber, int baseTax, int percentTax) {
 		super(fieldName, fieldNumber);
 		this.baseTax = baseTax;
@@ -42,7 +39,7 @@ public class Tax extends Fields {
 	 * On the Caravan Labor Camp field, the player is prompted whether he wants to pay 10% or 4000
 	 * @param playerWhoLanded The player who landed on the field
 	 */
-	
+	@Override
 	public void landOnField(Player playerWhoLanded) {
 		if(percentTax == 0) {
 			playerWhoLanded.getAccount().withdraw(baseTax);
@@ -60,7 +57,7 @@ public class Tax extends Fields {
     options, 
     options[0]);
 			if(n == 0){
-				playerWhoLanded.getAccount().withdraw((int) (percentTax * playerWhoLanded
+				playerWhoLanded.getAccount().withdraw((int) ((percentTax/100) * playerWhoLanded
 						.getAccount().getBalance()));
 			}
 			if(n == 1) {

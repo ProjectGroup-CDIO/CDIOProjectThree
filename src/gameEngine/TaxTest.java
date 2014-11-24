@@ -8,25 +8,27 @@ import org.junit.Test;
 public class TaxTest {
 
 	Player playerTestLand;
-	Tax tax1;
+	Tax caravan;
+	Tax goldmine;
 	
 	@Before
 	public void setUp() throws Exception {
 		playerTestLand = new Player("test1");
-		tax1 = new Tax("Caravan", 2, 4000, 10);
+		caravan = new Tax("Caravan", 2, 4000, 10);
+		goldmine = new Tax("Goldmine", 3, 2000, 0);
 	}
 	
 	@Test
 	public void test10percentLandOnField() {
 		//playerTestLand.getAccount().setBalance(30000);
-		tax1.landOnField(playerTestLand);
+		caravan.landOnField(playerTestLand);
 		System.out.println(playerTestLand.getAccount().getBalance());
 		assertEquals(playerTestLand.getAccount().getBalance(),27000);
 	} 
 	
 	@Test
 	public void test4000LandOnField() {
-		tax1.landOnField(playerTestLand);
+		caravan.landOnField(playerTestLand);
 		System.out.println(playerTestLand.getAccount().getBalance());
 		assertEquals(playerTestLand.getAccount().getBalance(), 26000);
 	}
