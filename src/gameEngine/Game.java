@@ -94,7 +94,7 @@ public class Game {
 			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1,0,color2);
 			n++;
 			color1 = color1 + 50;
-			color2 = color2 + 50;
+			color2 = color2 + 10;
 		}
 		
 		
