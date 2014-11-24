@@ -86,13 +86,15 @@ public class Game {
 
 		
 		n = 0; //Resest the variable used to run through the array
-		int color = 0;
+		int color1 = 0;
+		int color2 = 0;
 		//adds player cars to the game
 		while (n<=NumberOfPlayers-1){
 			Game.setTypeNameOne("Indtast navn for spiller 1");
-			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color,0,75);
+			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1,0,color2);
 			n++;
-			color = color + 50;
+			color1 = color1 + 50;
+			color2 = color2 + 50;
 		}
 		
 		
@@ -147,7 +149,6 @@ public class Game {
 					if(playerTurn[turn].getAccount().getBalance()==0){
 						activePlayers[turn] = false;
 						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
-						trow = 0; //In order for a player not to get an extra turn by trow==10, when player have reached 0 points
 					}
 					//Next players turn
 					turn++;
@@ -155,10 +156,6 @@ public class Game {
 					if (turn>NumberOfPlayers-1){
 						turn=0;
 					}
-				}
-				//The turn is not switched if a player rolls 10
-				if(trow==10){
-					continue;
 				}
 			}
 
