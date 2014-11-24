@@ -6,7 +6,7 @@ public class GameBoard {
 		new Territory("Crater", 2, 1500, 300),
 		new Fleet("Second Sail", 3, 4000),
 		new Territory("Tower", 4, 6000, 3200),
-		new Tax("Goldmine", 5, 4000, 0),
+		new Tax("Goldmine", 5, 2000, 0),
 		new Territory("Cold Desert", 6, 3000, 700),
 		new LaborCamp("Huts in the Mountain", 7, 2500),
 		new Territory("The Werewall", 8, 4300, 1300),

@@ -40,11 +40,11 @@ public class Fleet extends Ownable {
 				
 		}
 	}
-	//Her kï¿½bes der en fleet
+	//If a fleet is not owned, set the lander to buy it.
 	public void buyProperty(Player player){
-		super.setOwner(player);//Sï¿½tter spilleren til at vï¿½re ejer at fleet'en
-		player.getAccount().withdraw(getPrice());//Trï¿½kker penge fra spilleren. Sï¿½ spilleren kan kï¿½be fleet'en
-		super.getOwner().incrementFleetsOwned();//Addere en til spillerens nuvï¿½rende mï¿½ngde af fleets
+		super.setOwner(player);//sets the owner to be the player which a landed.
+		player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
+		super.getOwner().incrementFleetsOwned();//Adds one to the fleets owned under player.
 	}
 	
 	/*
@@ -54,7 +54,8 @@ public class Fleet extends Ownable {
 	
 	@Override
 	public void landOnField(Player player) {
-		if (player != null){//Hvis der er en ejer af den fleet man lander pï¿½, betaler man leje
+		//Hvis der er en ejer af den fleet man lander på, betaler man leje
+		if (super.getOwner() != null){
 			super.getOwner().getAccount().deposit(getRent());
 			player.getAccount().withdraw(getRent());
 		}
