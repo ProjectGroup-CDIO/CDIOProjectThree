@@ -17,7 +17,7 @@ public class TaxAlt extends Fields {
 	 * @param fieldName name of field
 	 * @param fieldNumber number of field on the game board
 	 * @param baseTax Base tax
-	 * @param percentTax Percent tax in who numbers. i.e. 10% is 10.
+	 * @param percentTax Percent tax in whole numbers. i.e. 10% is 10.
 	 */
 	public TaxAlt(String fieldName, int fieldNumber, int baseTax, int percentTax) {
 		super(fieldName, fieldNumber);
