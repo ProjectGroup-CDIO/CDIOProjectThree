@@ -7,8 +7,11 @@ public class Player {
 	private int currentPos = 0;
 	
 	public int getCurrentPos() {
-		return currentPos;
-	}
+		if(currentPos > 22){
+		currentPos = currentPos - 22;
+		}		
+			return currentPos;
+		}
 
 	public void setCurrentPos(int throwValue) {
 		this.currentPos = currentPos + throwValue;

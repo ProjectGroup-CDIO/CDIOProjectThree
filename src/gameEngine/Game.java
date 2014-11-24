@@ -138,12 +138,8 @@ public class Game {
 				if(activePlayers[turn]) {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
 					playerTurn[turn].setCurrentPos(trow);
-					/*
-					GUI.setCar(1, playerNames[turn]);//Sets the player at Start (field1)
-					GUI.removeCar(1, playerNames[turn]); //Removes the car from Start
-					*/
-					
-					GUI.setCar(playerTurn[turn].getCurrentPos(), playerNames[turn]); //sets car at field corresponding to sum of faceValues
+				
+					GUI.setCar(playerTurn[turn].getCurrentPos(), playerNames[turn]); //sets car at field corresponding to the value of the players poss
 				
 					//	Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
