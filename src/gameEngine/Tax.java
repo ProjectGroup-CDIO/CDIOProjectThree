@@ -1,73 +1,72 @@
 package gameEngine;
 
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane; 
 
-public class Tax extends Fields{
+public class Tax extends Fields {
+	
 	
 	private int baseTax;
-
-	private int percentTax;
+	private double percentTax;  
+	
+//	public TaxAlt(String fieldName, int fieldNumber) {
+//		super(fieldName, fieldNumber);
+//	}
+	
 	/**
-	 * 	
-	 * @param fieldName name of the field which is landed upon
-	 * @param fieldNumber number of the field in the game board
-	 * @param baseTaxInput The base tax amount 
-	 * @param PercentTaxInput The percentage that is taxed, value of 10 is recommended, divides players current balance with the number.
+	 * Constructs a field of type Tax
+	 * @param fieldName name of field
+	 * @param fieldNumber number of field on the game board
+	 * @param baseTax Base tax
+	 * @param percentTax Percent tax in whole numbers. i.e. 10% is 10.
 	 */
-
-	//private int percentTax; //Hvad med double = 0.1?
-	//S� skal jeg lige lege lidt med withdraw funktionen, men doubles ville v�re smartere i l�ngden
-		
-	public Tax(String fieldName, int fieldNumber, int baseTaxInput, int PercentTaxInput) {
+	public Tax(String fieldName, int fieldNumber, int baseTax, int percentTax) {
 		super(fieldName, fieldNumber);
-		baseTax = baseTaxInput;
-		percentTax = PercentTaxInput;
+		this.baseTax = baseTax;
+		this.percentTax = percentTax; 
+	}
+
+	public int getBaseTaxCaravan() {
+		return baseTax;
+	}
+
+	public double getPercentTaxCaravan() {
+		return percentTax;
 	}
 	
-			
-		/**
-		 * 
-		 * @param PlayerWholandedontheField is needed to withdraw the money from his account
-		 * return Is used to show how much was removed from the players account
-		 */
-		int takeBaseTax(Player PlayerWholandedontheField){
+	public int getBaseTaxGoldmine() {
+		return baseTax; 
+	}
 	
-			PlayerWholandedontheField.getAccount().withdraw(baseTax);
-			
-			return baseTax; 
+	/**
+	 * Withdraws the amount corresponding to the Labor Camp field.
+	 * On the Caravan Labor Camp field, the player is prompted whether he wants to pay 10% or 4000
+	 * @param playerWhoLanded The player who landed on the field
+	 */
+	
+	public void landOnField(Player playerWhoLanded) {
+		if(percentTax == 0) {
+			playerWhoLanded.getAccount().withdraw(baseTax);
 		}
-		/**
-		 * 
-		 * @param PlayerWholandedontheField is needed to withdraw the money from his account
-		 * @return Is used to show how much was removed from the players account
-		 */
-		int takePercentTax(Player PlayerWholandedontheField){
-			int percentValueTaxed = PlayerWholandedontheField.getAccount().getBalance()/percentTax;
-			PlayerWholandedontheField.getAccount().withdraw(PlayerWholandedontheField.getAccount().getBalance()/percentTax);
-			
-			return percentValueTaxed;
-		}
-		
-		
-		/*
-		 * This is the method activated when a field is landed upon. The methods prompts the user 
-		 * to make a choice, depending on the choice the player pays the given tax which is done by 
-		 * above methods.
-		 */
-		@Override
-		public void landOnField(Player player) {
-			//player choice called. This makes the player choose between his tax options
-			String[] amount = {"Pay the base tax" + baseTax ,"Pay the percent tax of " + percentTax};
-			String taxChoice = (String) JOptionPane.showInputDialog(null, "Choose to pay base tax of " + baseTax + " or option 2 which is "+ percentTax,
-					"Tax choose!!!", JOptionPane.QUESTION_MESSAGE, null,
-					amount, 
-					amount[0]); //Default choice is 1 which is pay baseTax;
-			if(taxChoice.equals("Pay the base tax" + baseTax)){
-				takeBaseTax(player);
-			}else if(taxChoice.equals("Pay the percent tax of " + percentTax)){
-				takePercentTax(player);
+		else {
+			Object[] options = {
+					"10% of your fortune",
+                    "4000 straight",};
+			int n = JOptionPane.showOptionDialog(null,
+    "Do you want to pay 10% of your fortune or 4000?",
+    "DECIDE NOW!",
+    JOptionPane.WARNING_MESSAGE,
+    JOptionPane.QUESTION_MESSAGE,
+    null,
+    options, 
+    options[0]);
+			if(n == 0){
+				playerWhoLanded.getAccount().withdraw((int) (percentTax * playerWhoLanded
+						.getAccount().getBalance()));
 			}
-			
+			if(n == 1) {
+				playerWhoLanded.getAccount().withdraw(baseTax);
+			}
 		}
-	
+	}
+
 }
