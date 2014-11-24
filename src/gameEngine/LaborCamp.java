@@ -29,12 +29,12 @@ public class LaborCamp extends Ownable {
 		return baseRent * faceValue; 
 	}
 	
-	@Override
+	
 	public int getRent() {
 		return baseRent * Die.getLastRoll();
 	}
 
-	@Override
+
 	public void landOnField(Player playerWhoLandedOnField) { 
 		
 		playerWhoLandedOnField.getAccount().withdraw(getRent());
