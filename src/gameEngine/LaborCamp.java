@@ -1,6 +1,7 @@
 package gameEngine;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class LaborCamp extends Ownable {
 	
@@ -38,6 +39,9 @@ public class LaborCamp extends Ownable {
 	 */
 	public void buyProperty(Player playerWhoLandedOnField){
 		if(playerWhoLandedOnField.getAccount().getBalance()<super.getPrice()){
+			final JPanel panel = new JPanel();
+			JOptionPane.showMessageDialog(panel, "Insufficient funds", "Service message",
+			JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		else{

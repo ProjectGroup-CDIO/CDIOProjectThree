@@ -1,6 +1,7 @@
 package gameEngine;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Fleet extends Ownable {
 	
@@ -51,6 +52,9 @@ public class Fleet extends Ownable {
 	 */
 	public void buyProperty(Player player){
 		if (player.getAccount().getBalance()<super.getPrice()){
+			final JPanel panel = new JPanel();
+			JOptionPane.showMessageDialog(panel, "Insufficient funds", "Service message",
+			JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 		else{
