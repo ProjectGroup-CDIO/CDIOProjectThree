@@ -6,7 +6,7 @@ public class Tax extends Fields {
 	
 	
 	private int baseTax;
-	private int percentTax;  
+	private double percentTax;  
 	
 	/**
 	 * Constructs a field of type Tax
@@ -44,7 +44,7 @@ public class Tax extends Fields {
 			Object[] options = {
 					"10% of your fortune",
                     "4000 straight",};
-			int n = JOptionPane.showOptionDialog(null,
+			int buttonPressed = JOptionPane.showOptionDialog(null,
     "Do you want to pay 10% of your fortune or 4000?",
     "DECIDE NOW!",
     JOptionPane.WARNING_MESSAGE,
@@ -52,11 +52,11 @@ public class Tax extends Fields {
     null,
     options, 
     options[0]);
-			if(n == 0){
-				playerWhoLanded.getAccount().withdraw((int) ((percentTax/100) * playerWhoLanded
+			if(buttonPressed == 0){
+				playerWhoLanded.getAccount().withdraw((int) ((percentTax/100.0) * playerWhoLanded
 						.getAccount().getBalance()));
 			}
-			if(n == 1) {
+			if(buttonPressed == 1) {
 				playerWhoLanded.getAccount().withdraw(baseTax);
 			}
 		}

@@ -47,7 +47,11 @@ public class GameBoard {
 		new Refuge("Monastery", 22, 500)
 	};
 	
-
+	public void resetOwner() {
+		for( int i = 0; i < ownables.length(); i++){
+			
+		}
+	}
 }
 
 

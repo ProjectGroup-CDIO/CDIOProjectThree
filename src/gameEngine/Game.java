@@ -18,9 +18,9 @@ public class Game {
 	Player player5 = new Player("PlayerFive");
 	Player player6 = new Player("PlayerSix");
 	//All the players are placed in an array
-	Player playerTurn[] = {player1,player2,player3,player4,player5,player6};
-	Language language = new Language(); 
+	Player playerTurn[] = {player1,player2,player3,player4,player5,player6}; 
 
+	GameBoard currentBoard = new GameBoard();
 
 	private boolean playerOne = true;
 	private boolean playerTwo = true;
@@ -42,9 +42,8 @@ public class Game {
 	//All typeNames have been placed in an array
 	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
 
-	private static String rollDice = "";
+	private static String rollDice = "Roll Dice";
 
-	GameBoard currentBoard = new GameBoard();
 
 
 	public void game(){
@@ -63,7 +62,6 @@ public class Game {
 		int NumberOfPlayers = Integer.parseInt(players);
 
 		//language selection, changes variables and sets the game board language.
-		language.languageSelection("English");
 
 
 		//User names are prompted from the users, and store in previous variables
@@ -169,6 +167,9 @@ public class Game {
 
 		}
 
+	}
+	public static void setTypeNameOne(String i) {
+		typeNameOne = i;
 	}
 	
 }
