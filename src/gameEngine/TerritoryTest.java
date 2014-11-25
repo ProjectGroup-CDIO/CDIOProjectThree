@@ -11,8 +11,6 @@ public class TerritoryTest {
 	Player lander;
 	Territory territory;
 	
-	
-	
 	@Before
 	public void setup(){
 		owner = new Player("owner");
@@ -21,18 +19,18 @@ public class TerritoryTest {
 	}
 	
 	/*
-	 * This is the rent which is required when you land on the field.
-	 * asdasd
-	 * asd
-	 * asd
-	 * a
-	 * sd
+	 * Test of the  rent required when a player lands on a field.
+	 * In this case the rent of field 1 (Tribal Encampment) is 100 points. 
 	 */
 	@Test
 	public void testTerritory(){
 		assertEquals(territory.getRent(),100);
-		
+	
 	}
+	
+	/*
+	 * This test is able to check if completeRent deposits and withdraws as implemented in the code.
+	 */
 	
 	@Test
 	public void testCompleteRent() {
