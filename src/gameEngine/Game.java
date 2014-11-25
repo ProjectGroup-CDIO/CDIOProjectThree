@@ -42,8 +42,10 @@ public class Game {
 	//All typeNames have been placed in an array
 	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
 
-	private static String rollDice = "Roll Dice";
-
+	private static String rollDice = "";
+	private static String won = "";
+	private static String isWinner = "";
+	private static String draw = "";
 
 
 	public void game(){
@@ -51,6 +53,8 @@ public class Game {
 		//variables created for storing the users names for the game in an array
 		//With only a Max amount of 6 players, the len of the array is only 6
 		String playerNames[] = {"","","","","",""};
+
+
 
 		//The choice of amount of players
 		String[] amount = { "2", "3", "4","5","6"};
@@ -61,8 +65,15 @@ public class Game {
 				amount[0]); //Default choice is 2 players
 		int NumberOfPlayers = Integer.parseInt(players);
 
-		//language selection, changes variables and sets the game board language.
 
+		//Game Window initialization
+		GUI.create("fieldstext-cdio3.txt");
+		Game.setTypeNameOne("Enter name for player 1");
+		Game.setTypeNameTwo("Enter name for player 2");
+		Game.setRollDice("Roll Dice");
+		Game.setWon(" WON!!!");
+		Game.setIsWinner(" IS THE WINNER!!!");
+		Game.setDraw("THE GAME WAS A DRAW");
 
 		//User names are prompted from the users, and store in previous variables
 		int n = 0; //Variable used to run through the array
@@ -147,30 +158,53 @@ public class Game {
 						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
 
 						//removes bankrupt player as owner of his fields
-						for(int is = 0; is < currentBoard.ownables.length; is++){
+						/*
+						 for(int is = 0; is < currentBoard.ownables.length; is++){
 							if(currentBoard.ownables[is].getOwner() == playerTurn[turn]) {
 								currentBoard.ownables[is].setOwner(null);
 							}	
+						*/
 						}
+						 
 						//Next players turn
 						turn++;
 						//If turn is out of bounds. It is reset to 0
 						if (turn>NumberOfPlayers-1){
 							turn=0;
 						}
-						
+
 					}
-					
+
 				}
 
 			}
 
 		}
 
-	}
-	public static void setTypeNameOne(String i) {
-		typeNameOne = i;
-	}
 	
+
+	//Language Strings getters and setters
+	public static void setTypeNameOne(String typeNameOne) {
+		Game.typeNameOne = typeNameOne;
+	}
+	public static void setTypeNameTwo(String typeNameTwo) {
+		Game.typeNameTwo = typeNameTwo;
+	}
+	public static String getRollDice() {
+		return rollDice;
+	}
+	public static void setRollDice(String rollDice) {
+		Game.rollDice = rollDice;
+	}
+	public static void setWon(String won) {
+		Game.won = won;
+	}
+	public static void setIsWinner(String isWinner) {
+		Game.isWinner = isWinner;
+	}
+	public static void setDraw(String draw) {
+		Game.draw = draw;
+	}
+
 }
 
