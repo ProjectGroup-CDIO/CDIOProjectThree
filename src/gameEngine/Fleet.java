@@ -1,5 +1,7 @@
 package gameEngine;
 
+import javax.swing.JOptionPane;
+
 public class Fleet extends Ownable {
 	
 	/**
@@ -66,9 +68,24 @@ public class Fleet extends Ownable {
 			player.getAccount().withdraw(getRent());
 		}
 		else {//Hvis der ikke er nogen ejer at den fleet man har landet p�, k�ber man fleet'en
-			buyProperty(player);
+			Object[] options = {
+					"Buy it now!",
+                    "No, thank you",};
+			int buttonPressed = JOptionPane.showOptionDialog(null,
+					"Do you wish to own this property?",
+					"DECIDE NOW!",
+					JOptionPane.WARNING_MESSAGE,
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					options, 
+					options[0]);
+			
+			if(buttonPressed == 0){
+				buyProperty(player);
+			}	
+			else if(buttonPressed == 1){
+				return;
+			}
 		}
 	}
-
 }
-
