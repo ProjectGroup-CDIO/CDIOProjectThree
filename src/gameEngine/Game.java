@@ -162,54 +162,7 @@ public class Game {
 			}
 
 		}
-		/*
-		if (game != true){
-			Car car = new Car.Builder()
-			.typeRacecar()
-			.primaryColor(Color.BLACK)
-			.secondaryColor(Color.WHITE)
-			.patternDiagonalDualColor()
-			.build();
-			//If both player have reached >= 3000 points. The player with the most points win.
-			if (playerOneVic && playerTwoVic){
-				if (player1.getAccount().getBalance() > player2.getAccount().getBalance()){
-					GUI.showMessage(playerOneName+won);
-					GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
-				}
-				else if (player1.getAccount().getBalance() < player2.getAccount().getBalance()){
-					GUI.showMessage(playerTwoName+won);
-					GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
-				}
-				//The game will end in a draw if both players have won and their points are equal
-				else if (player1.getAccount().getBalance() == player2.getAccount().getBalance()){
-					GUI.showMessage(draw);
-					GUI.addPlayer(draw, 0, car);
-				}
-			}
-			else if (playerOneVic && !playerTwoVic){
-				GUI.showMessage(playerOneName+won);
-				GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
-			}
-			else if (playerTwoVic && !playerOneVic){
-				GUI.showMessage(playerTwoName+won);
-				GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
-			}
-			if (playerOneLoss && playerTwoLoss){
-				GUI.showMessage(draw);
-			}
-			else if (playerOneLoss && !playerTwoLoss){
-				GUI.showMessage(playerTwoName+won);
-				GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
-			}
-			else if (!playerOneLoss && playerTwoLoss){
-
-				GUI.showMessage(playerOneName+won);
-				GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
-
-			}
-			
-		}
-		*/
+	
 	}
 	
 	//Language Strings getters and setters
