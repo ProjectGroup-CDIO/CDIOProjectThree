@@ -151,6 +151,10 @@ public class Game {
 					if(playerTurn[turn].getAccount().getBalance()==0){
 						activePlayers[turn] = false;
 						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
+						for(int is = 0; is < currentBoard.ownables.length; is++){
+							if(currentBoard.ownables[is].getOwner() == playerTurn[turn]) {
+								currentBoard.ownables[is].setOwner(null);
+						}	
 					}
 					//Next players turn
 					turn++;
@@ -161,6 +165,10 @@ public class Game {
 				}
 			}
 
+		}
+		
+			
+			
 		}
 	
 	}
