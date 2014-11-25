@@ -24,7 +24,9 @@ public class GameBoard {
 		new Territory("Mountain Village", 19, 4750, 1600),
 		new LaborCamp("The Pit", 20, 2500),
 		new Territory("Castle", 21, 8000, 4000),
-		new Refuge("Monastery", 22, 500)};
+		new Refuge("Monastery", 22, 500)
+	};
+	
 
 }
 

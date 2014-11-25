@@ -20,7 +20,7 @@ public class Game {
 	//All the players are placed in an array
 	Player playerTurn[] = {player1,player2,player3,player4,player5,player6};
 	Language language = new Language(); 
-	
+
 
 	private boolean playerOne = true;
 	private boolean playerTwo = true;
@@ -40,21 +40,21 @@ public class Game {
 	private static String typeNameSix = "";
 	//All typeNames have been placed in an array
 	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
-	
+
 	private static String rollDice = "";
 	private static String won = "";
 	private static String isWinner = "";
 	private static String draw = "";
-	
+
 	GameBoard currentBoard = new GameBoard();
- 
+
 
 	public void game(){
-	
+
 		//variables created for storing the users names for the game in an array
 		//With only a Max amount of 6 players, the len of the array is only 6
 		String playerNames[] = {"","","","","",""};
-		
+
 		//The choice of amount of players
 		String[] amount = { "2", "3", "4","5","6"};
 		//Selection box in which amount of players
@@ -71,7 +71,7 @@ public class Game {
 		//User names are prompted from the users, and store in previous variables
 		int n = 0; //Variable used to run through the array
 		while (n<=NumberOfPlayers-1){
-			playerNames[n]= GUI.getUserString(typeNames[n]);
+			playerNames[n] = GUI.getUserString(typeNames[n]);
 			n++;
 		}
 
@@ -80,11 +80,11 @@ public class Game {
 
 		//Dices to be rolled are created.
 		Die dieOne = new Die();
-		
+
 		int turn = 0; //Variable used to determine which players turn it is.
 		int inactivePlayers  = 0; //Variable to check amount of inactive player
 
-		
+
 		n = 0; //Resest the variable used to run through the array
 		int color1 = 0;
 		int color2 = 0;
@@ -96,15 +96,15 @@ public class Game {
 			color1 = color1 + 50;
 			color2 = color2 + 10;
 		}
-		
-		
+
+
 		n = 0; //Resest the variable used to run through the array
 		//Maximum amount of players that can be inactive
 		int MaxInactive = NumberOfPlayers - 1;
 		while(game) {
 			//Checks how many players have lost
 			while (n <= NumberOfPlayers - 1){
-				if (activePlayers[n]!=true){
+				if (activePlayers[n]!= true){
 					inactivePlayers++;//Increments in case of a player who have lost
 				}
 				n++;
@@ -127,13 +127,11 @@ public class Game {
 				inactivePlayers  = 0;
 				n = 0;
 			}
-			
+
 			//user prompted button, when pressed the value of rollDice is stored in i.
 			i = GUI.getUserButtonPressed(null, rollDice);
-			
+
 			if(i.equals(rollDice)){
-				
-				
 				int trow=dieOne.rollDie();
 				GUI.setDice(dieOne.getFaceValue1(), dieOne.getFaceValue2());
 
@@ -160,56 +158,9 @@ public class Game {
 			}
 
 		}
-		/*
-		if (game != true){
-			Car car = new Car.Builder()
-			.typeRacecar()
-			.primaryColor(Color.BLACK)
-			.secondaryColor(Color.WHITE)
-			.patternDiagonalDualColor()
-			.build();
-			//If both player have reached >= 3000 points. The player with the most points win.
-			if (playerOneVic && playerTwoVic){
-				if (player1.getAccount().getBalance() > player2.getAccount().getBalance()){
-					GUI.showMessage(playerOneName+won);
-					GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
-				}
-				else if (player1.getAccount().getBalance() < player2.getAccount().getBalance()){
-					GUI.showMessage(playerTwoName+won);
-					GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
-				}
-				//The game will end in a draw if both players have won and their points are equal
-				else if (player1.getAccount().getBalance() == player2.getAccount().getBalance()){
-					GUI.showMessage(draw);
-					GUI.addPlayer(draw, 0, car);
-				}
-			}
-			else if (playerOneVic && !playerTwoVic){
-				GUI.showMessage(playerOneName+won);
-				GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
-			}
-			else if (playerTwoVic && !playerOneVic){
-				GUI.showMessage(playerTwoName+won);
-				GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
-			}
-			if (playerOneLoss && playerTwoLoss){
-				GUI.showMessage(draw);
-			}
-			else if (playerOneLoss && !playerTwoLoss){
-				GUI.showMessage(playerTwoName+won);
-				GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
-			}
-			else if (!playerOneLoss && playerTwoLoss){
-
-				GUI.showMessage(playerOneName+won);
-				GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
-
-			}
-			
-		}
-		*/
-	}
 	
+	}
+
 	//Language Strings getters and setters
 	public static void setTypeNameOne(String typeNameOne) {
 		Game.typeNameOne = typeNameOne;
