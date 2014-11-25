@@ -50,9 +50,14 @@ public class Fleet extends Ownable {
 	 * Lets the player buy a fleet that's not owned
 	 */
 	public void buyProperty(Player player){
-		super.setOwner(player);//sets the owner to be the player which a landed.
-		player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
-		super.getOwner().incrementFleetsOwned();//Adds one to the fleets owned under player.
+		if (player.getAccount().getBalance()<super.getPrice()){
+			return;
+		}
+		else{
+			super.setOwner(player);//sets the owner to be the player which a landed.
+			player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
+			super.getOwner().incrementFleetsOwned();//Adds one to the fleets owned under player.
+		}
 	}
 	
 	/*
