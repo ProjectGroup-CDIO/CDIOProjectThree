@@ -7,7 +7,7 @@ import boundaryToMatador.GUI;
 import boundaryToMatador.Car; //in order to create a custom car
 import gameEngine.GameBoard;
 
-import java.awt.Color; //in order to change color of the car 
+import java.awt.Color; //in order to change color of the car and not use RGB-codes
 
 public class Game {
 
@@ -137,9 +137,11 @@ public class Game {
 
 				if(activePlayers[turn]) {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
-					playerTurn[turn].updateCurrentPos(trow);
-					//sets car at field corresponding to the value of the players position +1 to match
-					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);	
+					playerTurn[turn].setCurrentPos(trow);
+					//sets car at field corresponding to the value of the players position
+					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
+					System.out.println(playerTurn[turn].getCurrentPos());
+					
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
 					//Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
