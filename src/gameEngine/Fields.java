@@ -8,7 +8,7 @@ public abstract class Fields {
 	int fieldNumber;
 	
 	/**
-	 * 
+	 * Constructs a field with a name and a number
 	 * @param fieldName Name of field
 	 * @param fieldNumber Number of field
 	 */
