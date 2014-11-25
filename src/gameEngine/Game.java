@@ -127,6 +127,7 @@ public class Game {
 			//Terminates the game if all except one have lost
 			if (inactivePlayers==MaxInactive){
 				game=false;
+				GUI.addPlayer(playerNames[turn]+" is the winner!",playerTurn[turn].getAccount().getBalance(), 0, 0, 0);
 				break;
 			}
 			//Resets in case of new turn
