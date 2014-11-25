@@ -77,7 +77,7 @@ public class Fleet extends Ownable {
 					"Buy it now!",
                     "No, thank you",};
 			int buttonPressed = JOptionPane.showOptionDialog(null,
-					"Do you wish to own this property?",
+					"Do you wish to own this property? (Fleet-property)",
 					"DECIDE NOW!",
 					JOptionPane.WARNING_MESSAGE,
 					JOptionPane.QUESTION_MESSAGE,
