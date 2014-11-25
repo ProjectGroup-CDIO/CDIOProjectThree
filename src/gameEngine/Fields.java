@@ -20,7 +20,7 @@ public abstract class Fields {
 	
 	public abstract void landOnField(Player player);
 	
-	public abstract void sellField();
+
 }
 
 

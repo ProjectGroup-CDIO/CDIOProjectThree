@@ -25,11 +25,11 @@ public class GameTest {
 		assertTrue(currentBoard.ownables[1].getOwner().getName().equals("1"));
 		
 		for(int is = 0; is < currentBoard.ownables.length; is++){
-			System.out.println("--> "+(currentBoard.ownables[is].getOwner() == playerTurn[0]));
+//			System.out.println("--> "+(currentBoard.ownables[is].getOwner() == playerTurn[0]));
 			if(currentBoard.ownables[is].getOwner() == playerTurn[0]) {
 				currentBoard.ownables[is].setOwner(null);
-				System.out.println("owner --> "+(currentBoard.ownables[is].getOwner()));
-				System.out.println("current --> "+(playerTurn[0]));
+//				System.out.println("owner --> "+(currentBoard.ownables[is].getOwner()));
+//				System.out.println("current --> "+(playerTurn[0]));
 			}
 		}
 		assertNull(currentBoard.ownables[1].getOwner());
