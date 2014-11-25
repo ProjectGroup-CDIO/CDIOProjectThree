@@ -20,7 +20,7 @@ public class Game {
 	//All the players are placed in an array
 	Player playerTurn[] = {player1,player2,player3,player4,player5,player6};
 	Language language = new Language(); 
-	
+
 
 	private boolean playerOne = true;
 	private boolean playerTwo = true;
@@ -40,21 +40,21 @@ public class Game {
 	private static String typeNameSix = "";
 	//All typeNames have been placed in an array
 	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
-	
+
 	private static String rollDice = "";
 	private static String won = "";
 	private static String isWinner = "";
 	private static String draw = "";
-	
+
 	GameBoard currentBoard = new GameBoard();
- 
+
 
 	public void game(){
-	
+
 		//variables created for storing the users names for the game in an array
 		//With only a Max amount of 6 players, the len of the array is only 6
 		String playerNames[] = {"","","","","",""};
-		
+
 		//The choice of amount of players
 		String[] amount = { "2", "3", "4","5","6"};
 		//Selection box in which amount of players
@@ -71,7 +71,7 @@ public class Game {
 		//User names are prompted from the users, and store in previous variables
 		int n = 0; //Variable used to run through the array
 		while (n<=NumberOfPlayers-1){
-			playerNames[n]= GUI.getUserString(typeNames[n]);
+			playerNames[n] = GUI.getUserString(typeNames[n]);
 			n++;
 		}
 
@@ -80,11 +80,11 @@ public class Game {
 
 		//Dices to be rolled are created.
 		Die dieOne = new Die();
-		
+
 		int turn = 0; //Variable used to determine which players turn it is.
 		int inactivePlayers  = 0; //Variable to check amount of inactive player
 
-		
+
 		n = 0; //Resest the variable used to run through the array
 		int color1 = 0;
 		int color2 = 0;
@@ -96,15 +96,15 @@ public class Game {
 			color1 = color1 + 50;
 			color2 = color2 + 10;
 		}
-		
-		
+
+
 		n = 0; //Resest the variable used to run through the array
 		//Maximum amount of players that can be inactive
 		int MaxInactive = NumberOfPlayers - 1;
 		while(game) {
 			//Checks how many players have lost
 			while (n <= NumberOfPlayers - 1){
-				if (activePlayers[n]!=true){
+				if (activePlayers[n]!= true){
 					inactivePlayers++;//Increments in case of a player who have lost
 				}
 				n++;
@@ -127,19 +127,17 @@ public class Game {
 				inactivePlayers  = 0;
 				n = 0;
 			}
-			
+
 			//user prompted button, when pressed the value of rollDice is stored in i.
 			i = GUI.getUserButtonPressed(null, rollDice);
-			
+
 			if(i.equals(rollDice)){
-				
-				
 				int trow=dieOne.rollDie();
 				GUI.setDice(dieOne.getFaceValue1(), dieOne.getFaceValue2());
 
 				if(activePlayers[turn]) {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
-					playerTurn[turn].setCurrentPos(trow);
+					playerTurn[turn].updateCurrentPos(trow);
 					//sets car at field corresponding to the value of the players position
 					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
 					System.out.println(playerTurn[turn].getCurrentPos());
@@ -172,7 +170,7 @@ public class Game {
 		}
 	
 	}
-	
+
 	//Language Strings getters and setters
 	public static void setTypeNameOne(String typeNameOne) {
 		Game.typeNameOne = typeNameOne;
