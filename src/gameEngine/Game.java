@@ -7,7 +7,7 @@ import boundaryToMatador.GUI;
 import boundaryToMatador.Car; //in order to create a custom car
 import gameEngine.GameBoard;
 
-import java.awt.Color; //in order to change color of the car and not use RGB-codes
+import java.awt.Color; //in order to change color of the car 
 
 public class Game {
 
@@ -140,10 +140,8 @@ public class Game {
 				if(activePlayers[turn]) {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
 					playerTurn[turn].setCurrentPos(trow);
-					//sets car at field corresponding to the value of the players position
-					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
-					System.out.println(playerTurn[turn].getCurrentPos());
-					
+					//sets car at field corresponding to the value of the players position +1 to match
+					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);	
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
 					//Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
@@ -162,7 +160,54 @@ public class Game {
 			}
 
 		}
-	
+		/*
+		if (game != true){
+			Car car = new Car.Builder()
+			.typeRacecar()
+			.primaryColor(Color.BLACK)
+			.secondaryColor(Color.WHITE)
+			.patternDiagonalDualColor()
+			.build();
+			//If both player have reached >= 3000 points. The player with the most points win.
+			if (playerOneVic && playerTwoVic){
+				if (player1.getAccount().getBalance() > player2.getAccount().getBalance()){
+					GUI.showMessage(playerOneName+won);
+					GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
+				}
+				else if (player1.getAccount().getBalance() < player2.getAccount().getBalance()){
+					GUI.showMessage(playerTwoName+won);
+					GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
+				}
+				//The game will end in a draw if both players have won and their points are equal
+				else if (player1.getAccount().getBalance() == player2.getAccount().getBalance()){
+					GUI.showMessage(draw);
+					GUI.addPlayer(draw, 0, car);
+				}
+			}
+			else if (playerOneVic && !playerTwoVic){
+				GUI.showMessage(playerOneName+won);
+				GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
+			}
+			else if (playerTwoVic && !playerOneVic){
+				GUI.showMessage(playerTwoName+won);
+				GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
+			}
+			if (playerOneLoss && playerTwoLoss){
+				GUI.showMessage(draw);
+			}
+			else if (playerOneLoss && !playerTwoLoss){
+				GUI.showMessage(playerTwoName+won);
+				GUI.addPlayer(playerTwoName+isWinner, player2.getAccount().getBalance(), car);
+			}
+			else if (!playerOneLoss && playerTwoLoss){
+
+				GUI.showMessage(playerOneName+won);
+				GUI.addPlayer(playerOneName+isWinner, player1.getAccount().getBalance(), car);
+
+			}
+			
+		}
+		*/
 	}
 	
 	//Language Strings getters and setters
