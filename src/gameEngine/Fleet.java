@@ -1,26 +1,30 @@
 package gameEngine;
 
 public class Fleet extends Ownable {
-/**
- * 
- * @param fieldName The name of the field.
- * @param fieldNumber Number of the field. 
- * @param price the price of the field.
- */
+	
+	/**
+	 * Constructs a field of the type Fleet
+	 * @param fieldName The name of the field.
+	 * @param fieldNumber Number of the field. 
+	 * @param price the price of the field.
+	 */
+	
 	public Fleet(String fieldName, int fieldNumber, int price) {
 		super(fieldName, fieldNumber, price);
 	}
+	
 	/*
 	 * The Value of the amount of fleet you own. RENt_1 = you own 1 Fleet RENT_2 = you own 2 ect.
 	 */
+	
 	final int RENT_1 = 500;
 	final int RENT_2 = 1000;
 	final int RENT_3 = 2000;
 	final int RENT_4 = 4000;
 
 	/*
-	 * (non-Javadoc)
-	 * @see gameEngine.Ownable#getRent() A switch made over the value of RENT_1 to RENT_4.
+	 * (non-Javadoc) A switch made over the value of RENT_1 to RENT_4.
+	 * @see gameEngine.Ownable#getRent() 
 	 */
 	
 	@Override
@@ -40,7 +44,9 @@ public class Fleet extends Ownable {
 				
 		}
 	}
-	//If a fleet is not owned, set the lander to buy it.
+	/*
+	 * Lets the player buy a fleet that's not owned
+	 */
 	public void buyProperty(Player player){
 		super.setOwner(player);//sets the owner to be the player which a landed.
 		player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
@@ -54,7 +60,7 @@ public class Fleet extends Ownable {
 	
 	@Override
 	public void landOnField(Player player) {
-		//Hvis der er en ejer af den fleet man lander på, betaler man leje
+		//Hvis der er en ejer af den fleet man lander pï¿½, betaler man leje
 		if (super.getOwner() != null){
 			super.getOwner().getAccount().deposit(getRent());
 			player.getAccount().withdraw(getRent());
