@@ -41,7 +41,6 @@ public class Player {
 
 	/**
 	 * Name change method
-	 * 
 	 * @param name name you would like the given player to be called instead.
 	 */
 	public void setName(String name) {

@@ -29,6 +29,7 @@ public class Game {
 	private boolean playerFive = true;
 	private boolean playerSix = true;
 	private boolean activePlayers[]={playerOne,playerTwo,playerThree,playerFour,playerFive,playerSix};
+
 	private boolean game = true;
 
 	//Language used in the code, will be changed by the language setting.
@@ -42,9 +43,6 @@ public class Game {
 	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
 
 	private static String rollDice = "";
-	private static String won = "";
-	private static String isWinner = "";
-	private static String draw = "";
 
 	GameBoard currentBoard = new GameBoard();
 
@@ -141,7 +139,7 @@ public class Game {
 					//sets car at field corresponding to the value of the players position
 					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
 					System.out.println(playerTurn[turn].getCurrentPos());
-					
+
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
 					//Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
@@ -149,52 +147,29 @@ public class Game {
 					if(playerTurn[turn].getAccount().getBalance()==0){
 						activePlayers[turn] = false;
 						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
-						
+
 						//removes bankrupt player as owner of his fields
 						for(int is = 0; is < currentBoard.ownables.length; is++){
 							if(currentBoard.ownables[is].getOwner() == playerTurn[turn]) {
 								currentBoard.ownables[is].setOwner(null);
-						}	
+							}	
+						}
+						//Next players turn
+						turn++;
+						//If turn is out of bounds. It is reset to 0
+						if (turn>NumberOfPlayers-1){
+							turn=0;
+						}
+						
 					}
-					//Next players turn
-					turn++;
-					//If turn is out of bounds. It is reset to 0
-					if (turn>NumberOfPlayers-1){
-						turn=0;
-					}
+					
 				}
+
 			}
 
 		}
-		
-			
-			
-		}
+
+	}
 	
-	}
-
-	//Language Strings getters and setters
-	public static void setTypeNameOne(String typeNameOne) {
-		Game.typeNameOne = typeNameOne;
-	}
-	public static void setTypeNameTwo(String typeNameTwo) {
-		Game.typeNameTwo = typeNameTwo;
-	}
-	public static String getRollDice() {
-		return rollDice;
-	}
-	public static void setRollDice(String rollDice) {
-		Game.rollDice = rollDice;
-	}
-	public static void setWon(String won) {
-		Game.won = won;
-	}
-	public static void setIsWinner(String isWinner) {
-		Game.isWinner = isWinner;
-	}
-	public static void setDraw(String draw) {
-		Game.draw = draw;
-	}
-
 }
 

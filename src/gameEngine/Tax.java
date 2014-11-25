@@ -6,18 +6,14 @@ public class Tax extends Fields {
 	
 	
 	private int baseTax;
-	private double percentTax;  
+	private int percentTax;  
 	
 	/**
 	 * Constructs a field of type Tax
 	 * @param fieldName name of field
 	 * @param fieldNumber number of field on the game board
 	 * @param baseTax Base tax
-<<<<<<< HEAD
-	 * @param percentTax Percent tax in who numbers. i.e. 10% is 10.
-=======
 	 * @param percentTax Percent tax in whole numbers. i.e. 10% is 10.
->>>>>>> branch 'master' of https://github.com/ProjectGroup-CDIO/CDIOProjectThree.git
 	 */
 	
 	public Tax(String fieldName, int fieldNumber, int baseTax, int percentTax) {
@@ -26,16 +22,12 @@ public class Tax extends Fields {
 		this.percentTax = percentTax; 
 	}
 
-	public int getBaseTaxCaravan() {
+	public int getBaseTax() {
 		return baseTax;
 	}
 
-	public double getPercentTaxCaravan() {
+	public double getPercentTax() {
 		return percentTax;
-	}
-	
-	public int getBaseTaxGoldmine() {
-		return baseTax; 
 	}
 	
 	/**
