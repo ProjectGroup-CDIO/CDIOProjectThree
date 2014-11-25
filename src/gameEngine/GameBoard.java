@@ -20,7 +20,6 @@ public class GameBoard {
 		new Territory("Mountain Village", 19, 4750, 1600),
 		new LaborCamp("The Pit", 20, 2500),
 		new Territory("Castle", 21, 8000, 4000),
-
 	};
 	
 	Fields[] fields = new Fields[]{
@@ -45,7 +44,6 @@ public class GameBoard {
 		ownables[14],
 		ownables[15],
 		ownables[16],
->>>>>>> branch 'master' of https://github.com/ProjectGroup-CDIO/CDIOProjectThree.git
 		new Refuge("Monastery", 22, 500)
 	};
 	
