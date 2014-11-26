@@ -5,42 +5,32 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TaxTest{
+public class TaxTest {
 
+	Player playerTestLand;
+	Tax caravan;
+	Tax goldmine;
 	
-	Player lars;
-	Tax penge;
 	@Before
 	public void setUp() throws Exception {
-	lars = new Player("Lars");
-	penge = new Tax("abc", 0, 2000, 10);
+		playerTestLand = new Player("test1");
+		caravan = new Tax("Caravan", 2, 4000, 10);
+		goldmine = new Tax("Goldmine", 3, 2000, 0);
 	}
-
-	@Test
-	public void testTakeBaseTax() {	
-	assertEquals(penge.takeBaseTax(lars),2000);
-	assertEquals(lars.getAccount().getBalance(),28000);
 	
-	}
-
 	@Test
-	public void testTakePercentTax() {
+	public void test10percentLandOnField() {
+		//playerTestLand.getAccount().setBalance(30000);
+		caravan.landOnField(playerTestLand);
+		System.out.println(playerTestLand.getAccount().getBalance());
+		assertEquals(playerTestLand.getAccount().getBalance(),27000);
+	} 
 	
-		assertEquals(penge.takePercentTax(lars), 3000);
-		assertEquals(lars.getAccount().getBalance(),27000);
-	}
 	@Test
-	public void testlandOnField1(){
-		penge.landOnField(lars);
-		assertEquals(lars.getAccount().getBalance(),28000);
-	
-		 
-	}
-	@Test
-	public void testlandOnField2(){
-		penge.landOnField(lars);
-		assertEquals(lars.getAccount().getBalance(),27000);
-		
+	public void test4000LandOnField() {
+		caravan.landOnField(playerTestLand);
+		System.out.println(playerTestLand.getAccount().getBalance());
+		assertEquals(playerTestLand.getAccount().getBalance(), 26000);
 	}
 
 }

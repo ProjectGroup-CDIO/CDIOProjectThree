@@ -14,13 +14,4 @@ public class Refuge extends Fields{
 		playerWhoLandedOnField.getAccount().deposit(bonus);
 	}
 	
-//	public void landOnField(Player playerWhoLandedOnField){
-//		if (fieldName.equals("Monastery")){
-//			bonus= 500; //Monestery gives the player 500
-//		}
-//		else{
-//			bonus = 5000; //The Only other refuge is the Walled City which gives 5000
-//		}
-//		playerWhoLandedOnField.getAccount().deposit(bonus); //Deposit the bonus to the player
-	
 }

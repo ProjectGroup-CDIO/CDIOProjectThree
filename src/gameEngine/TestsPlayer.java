@@ -15,13 +15,13 @@ public class TestsPlayer {
 	@Test //Checking if the contruct is properly made with the correct name.
 	public void testPlayer() {
 		
-		assertEquals(testPlay.name,"PlayerOne");
+		assertEquals(testPlay.getName(),"PlayerOne");
 	}
 
 	@Test //checks and sees if the name has been changed
 	public void testSetName() {
 		testPlay.setName("TestName");
-		assertEquals(testPlay.name,"TestName");
+		assertEquals(testPlay.getName(),"TestName");
 	}
 
 	@Test //tests that the method returns the name of the initialized player
@@ -29,7 +29,7 @@ public class TestsPlayer {
 		assertEquals(testPlay.getName(),"PlayerOne");
 	}
 
-	@Test //tests to see if the playeracc is properly translated into a string
+	@Test //tests to see if the playerAcc is properly translated into a string
 	public void testToString() {
 		System.out.println(testPlay.toString());
 		assertTrue(testPlay.toString().contains("1000"));
