@@ -3,8 +3,8 @@ package gameEngine;
 
 import javax.swing.JOptionPane;
 
-import boundaryToMatador.GUI;
-import boundaryToMatador.Car; //in order to create a custom car
+import desktop_resources.GUI;
+import desktop_codebehind.Car; //in order to create a custom car
 import gameEngine.GameBoard;
 
 import java.awt.Color; //in order to change color of the car and not use RGB-codes
