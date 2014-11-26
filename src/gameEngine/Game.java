@@ -117,11 +117,29 @@ public class Game {
 			}
 			//Terminates the game if all except one have lost
 			if (inactivePlayers==MaxInactive){
-				game=false;
-				GUI.addPlayer(playerNames[turn]+" is the winner!",playerTurn[turn].getAccount().getBalance(), 0, 0, 0);
-				System.out.println("Game is over!");
-				break;
-			}
+			game=false;	
+			//GUI.addPlayer(playerNames[turn]+" is the winner!",playerTurn[turn].getAccount().getBalance(), 0, 0, 0);
+				Object[] options = {"Yes, please!",
+				            		"No, thanks!",};
+				int endButtonPressed = JOptionPane.showOptionDialog(null,playerNames[turn]+" is the winner! " + " Would you like to play again? "," You won ",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				options,
+				options[0]);
+				if(endButtonPressed == 0){
+					
+//				GUI.close();				
+//				Game game = new Game();
+//				game.game();
+				}
+				else if (endButtonPressed == 1){
+				System.exit(1);
+				}
+
+				}
+
+			
 			
 			//Prints out which players turn it is
 			System.out.println(playerNames[turn]+"'s turn");
@@ -159,10 +177,10 @@ public class Game {
 					}
 
 				}
-
-			}
-
 		}
+	}
+
+
 
 
 
