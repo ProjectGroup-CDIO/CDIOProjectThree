@@ -86,15 +86,17 @@ public class Game {
 
 		
 		n = 0; //Resest the variable used to run through the array
-		int color1 = 0;
-		int color2 = 0;
+		int color1 = 255;
+		int color2 = 255;
+		int color3 = 0;
 		//adds player cars to the game
 		while (n<=NumberOfPlayers-1){
 			Game.setTypeNameOne("Indtast navn for spiller 1");
-			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1,0,color2);
+			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1,color2,color3);
 			n++;
-			color1 = color1 + 50;
-			color2 = color2 + 10;
+			color1 = color1 - 10;
+			color2 = color2 - 40;
+			color3 = color3 + 35;
 		}
 		
 		
