@@ -39,6 +39,7 @@ public class Tax extends Fields {
 	public void landOnField(Player playerWhoLanded) {
 		if(percentTax == 0) {
 			playerWhoLanded.getAccount().withdraw(baseTax);
+			System.out.println(playerWhoLanded.getName()+" landed on "+fieldName+" and paid "+baseTax);
 		}
 		else {
 			Object[] options = {
@@ -55,9 +56,13 @@ public class Tax extends Fields {
 			if(buttonPressed == 0){
 				playerWhoLanded.getAccount().withdraw((int) ((percentTax/100.0) * playerWhoLanded
 						.getAccount().getBalance()));
+				System.out.println(playerWhoLanded.getName()+" landed on "+fieldName+" and paid "+(((10*playerWhoLanded
+						.getAccount().getBalance())/9)-(playerWhoLanded
+								.getAccount().getBalance())));
 			}
 			if(buttonPressed == 1) {
 				playerWhoLanded.getAccount().withdraw(baseTax);
+				System.out.println(playerWhoLanded.getName()+" landed on "+fieldName+" and paid "+baseTax);
 			}
 		}
 	}

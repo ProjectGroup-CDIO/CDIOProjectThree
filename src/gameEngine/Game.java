@@ -146,7 +146,7 @@ public class Game {
 					
 					//sets car at field corresponding to the value of the players position
 					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
-					System.out.println(playerTurn[turn].getCurrentPos());
+					System.out.println(playerNames[turn]+" threw a "+playerTurn[turn].getCurrentPos());
 
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
 					
