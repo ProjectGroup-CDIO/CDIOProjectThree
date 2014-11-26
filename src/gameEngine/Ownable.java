@@ -2,6 +2,7 @@ package gameEngine;
 
 public abstract class Ownable extends Fields {
 	
+	private String name;
 	private Player owner;
 	private int price;
 	
@@ -53,6 +54,11 @@ public abstract class Ownable extends Fields {
 	
 	public void setOwner(Player owner) {
 		this.owner = owner; 
+		this.name = owner.getName();
+	}
+	
+	public String getOwnerName() {
+		return name; 
 	}
 	
 	public boolean isBuyable() {

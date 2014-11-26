@@ -12,6 +12,7 @@ public class Refuge extends Fields{
 	@Override
 	public void landOnField(Player playerWhoLandedOnField) {
 		playerWhoLandedOnField.getAccount().deposit(bonus);
+		System.out.println(playerWhoLandedOnField.getName()+" recieved "+bonus);
 	}
 	
 }

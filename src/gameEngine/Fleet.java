@@ -61,6 +61,7 @@ public class Fleet extends Ownable {
 			super.setOwner(player);//sets the owner to be the player which a landed.
 			player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
 			super.getOwner().incrementFleetsOwned();//Adds one to the fleets owned under player.
+			System.out.println(player.getName()+" bought "+fieldName+" for "+getPrice());
 		}
 	}
 	
@@ -75,6 +76,7 @@ public class Fleet extends Ownable {
 		if (super.getOwner() != null){
 			super.getOwner().getAccount().deposit(getRent());
 			player.getAccount().withdraw(getRent());
+			System.out.println(player.getName()+" paid "+getRent()+" in rent to "+getOwnerName());
 		}
 		else {//Hvis der ikke er nogen ejer at den fleet man har landet p�, k�ber man fleet'en
 			Object[] options = {

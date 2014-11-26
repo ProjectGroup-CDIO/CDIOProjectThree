@@ -73,7 +73,7 @@
 	backgroundColor::44,,255,,242;;
 	foregroundColor::0,,0,,0;;
 	title::WALLED CITY;;
-	subText::Receive: 4000;; 
+	subText::Receive: 5000;; 
 	description::Refuge: Walled City;;
 	leje:: ;;
 ||	
