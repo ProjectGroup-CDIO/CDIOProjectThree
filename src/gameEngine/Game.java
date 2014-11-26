@@ -56,7 +56,7 @@ public class Game {
 		//With only a Max amount of 6 players, the len of the array is only 6
 		String playerNames[] = {"","","","","",""};
 
-
+		
 
 		//The choice of amount of players
 		String[] amount = { "2", "3", "4","5","6"};
@@ -112,6 +112,11 @@ public class Game {
 		//Maximum amount of players that can be inactive
 		int MaxInactive = NumberOfPlayers - 1;
 		while(game) {
+			
+			for(int check = 0; check < NumberOfPlayers; check++){
+				GUI.setBalance(playerNames[check], playerTurn[check].getAccount().getBalance());
+			}
+			
 			//Checks if the players have already lost. If so, next players turn
 			if (activePlayers[turn]!=true){
 				turn++;
