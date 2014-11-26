@@ -5,10 +5,7 @@ import javax.swing.JOptionPane;
 
 
 import boundaryToMatador.GUI;
-import boundaryToMatador.Car; //in order to create a custom car
 import gameEngine.GameBoard;
-
-import java.awt.Color; //in order to change color of the car and not use RGB-codes
 
 public class Game {
 
@@ -44,9 +41,7 @@ public class Game {
 	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
 
 	private static String rollDice = "";
-	private static String won = "";
-	private static String isWinner = "";
-	private static String draw = "";
+
 
 	private int inactivePlayers  = 0; //Variable to check amount of inactive player
 	
@@ -73,9 +68,7 @@ public class Game {
 		Game.setTypeNameOne("Enter name for player 1");
 		Game.setTypeNameTwo("Enter name for player 2");
 		Game.setRollDice("Roll Dice");
-		Game.setWon(" WON!!!");
-		Game.setIsWinner(" IS THE WINNER!!!");
-		Game.setDraw("THE GAME WAS A DRAW");
+
 
 		//User names are prompted from the users, and store in previous variables
 		int n = 0; //Variable used to run through the array
@@ -100,7 +93,6 @@ public class Game {
 		int[] color3 = { 255,0,56,26,255,255};
 		//adds player cars to the game
 		while (n<=NumberOfPlayers-1){
-			Game.setTypeNameOne("Indtast navn for spiller 1");
 			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1[n],color2[n],color3[n]);
 			n++;
 		}
@@ -207,15 +199,7 @@ public class Game {
 	public static void setRollDice(String rollDice) {
 		Game.rollDice = rollDice;
 	}
-	public static void setWon(String won) {
-		Game.won = won;
-	}
-	public static void setIsWinner(String isWinner) {
-		Game.isWinner = isWinner;
-	}
-	public static void setDraw(String draw) {
-		Game.draw = draw;
+
 	}
 
-}
 
