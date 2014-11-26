@@ -128,6 +128,7 @@ public class Game {
 			if (inactivePlayers==MaxInactive){
 				game=false;
 				GUI.addPlayer(playerNames[turn]+" is the winner!",playerTurn[turn].getAccount().getBalance(), 0, 0, 0);
+				System.out.println("Game is over!");
 				break;
 			}
 			//Resets in case of new turn
@@ -154,21 +155,7 @@ public class Game {
 					//Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
 					//Sets the player to lose in case of 0 points
-					if(playerTurn[turn].getAccount().getBalance()==0){
-						activePlayers[turn] = false;
-						GUI.removeAllCars(playerNames[turn]); //Player is removed from board
-
-						//removes bankrupt player as owner of his fields
-						
-						 for(int is = 0; is < currentBoard.ownables.length; is++){
-							if(currentBoard.ownables[is].getOwner() == playerTurn[turn]) {
-								currentBoard.ownables[is].setOwner(null);
-							}	
-						
-						}
-						 
-					}
-						 
+					checkForLoserAndExecute(playerNames, turn);	 
 						//Next players turn
 						turn++;
 						//If turn is out of bounds. It is reset to 0
@@ -183,6 +170,25 @@ public class Game {
 			}
 
 		}
+
+
+
+	private void checkForLoserAndExecute(String[] playerNames, int turn) {
+		if(playerTurn[turn].getAccount().getBalance()==0){
+			activePlayers[turn] = false;
+			GUI.removeAllCars(playerNames[turn]); //Player is removed from board
+
+			//removes bankrupt player as owner of his fields
+			
+			 for(int is = 0; is < currentBoard.ownables.length; is++){
+				if(currentBoard.ownables[is].getOwner() == playerTurn[turn]) {
+					currentBoard.ownables[is].setOwner(null);
+				}	
+			
+			}
+			 
+		}
+	}
 
 	
 
