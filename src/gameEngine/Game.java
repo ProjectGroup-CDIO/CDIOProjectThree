@@ -58,7 +58,7 @@ public class Game {
 
 		//The choice of amount of players
 		String[] amount = { "2", "3", "4","5","6"};
-		//Selection box in which amount of players
+		//Selection box in which amount of players is chosen
 		String players = (String) JOptionPane.showInputDialog(null, "Choose amount of players:",
 				"The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
 				amount, 
@@ -83,7 +83,7 @@ public class Game {
 		}
 
 		//variable used to store the button pressed value
-		String i = "";
+		String buttonPressed = "";
 
 		//Dices to be rolled are created.
 		Die dieOne = new Die();
@@ -93,15 +93,17 @@ public class Game {
 
 
 		n = 0; //Resest the variable used to run through the array
-		int color1 = 0;
-		int color2 = 0;
+		int color1 = 255;
+		int color2 = 255;
+		int color3 = 0;
 		//adds player cars to the game
 		while (n<=NumberOfPlayers-1){
 			Game.setTypeNameOne("Indtast navn for spiller 1");
-			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1,0,color2);
+			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1,color2,color3);
 			n++;
-			color1 = color1 + 50;
-			color2 = color2 + 10;
+			color1 = color1 - 10;
+			color2 = color2 - 40;
+			color3 = color3 + 35;
 		}
 
 
@@ -138,24 +140,28 @@ public class Game {
 			}
 
 			//user prompted button, when pressed the value of rollDice is stored in i.
-			i = GUI.getUserButtonPressed(null, rollDice);
+			buttonPressed = GUI.getUserButtonPressed(null, rollDice);
 
-			if(i.equals(rollDice)){
+			if(buttonPressed.equals(rollDice)){
 				int trow=dieOne.rollDie();
 				GUI.setDice(dieOne.getFaceValue1(), dieOne.getFaceValue2());
 
 				if(activePlayers[turn]) {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
 					playerTurn[turn].updateCurrentPos(trow);
+					
 					//sets car at field corresponding to the value of the players position
 					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
 					System.out.println(playerTurn[turn].getCurrentPos());
 
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
+					
 					//Fields.field(playerTurn[turn], trow, i);
 					GUI.setBalance(playerNames[turn], playerTurn[turn].getAccount().getBalance());
+					
 					//Sets the player to lose in case of 0 points
 					checkForLoserAndExecute(playerNames, turn);	 
+
 						//Next players turn
 						turn++;
 						//If turn is out of bounds. It is reset to 0
