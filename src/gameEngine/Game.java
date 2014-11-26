@@ -94,17 +94,15 @@ public class Game {
 
 
 		n = 0; //Resest the variable used to run through the array
-		int color1 = 255;
-		int color2 = 255;
-		int color3 = 0;
+		//Predetermined colors for all the six cars
+		int[] color1 = { 255,0,18,255,17,171};
+		int[] color2 = { 255,0,247,56,0,0,0};
+		int[] color3 = { 255,0,56,26,255,255};
 		//adds player cars to the game
 		while (n<=NumberOfPlayers-1){
 			Game.setTypeNameOne("Indtast navn for spiller 1");
-			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1,color2,color3);
+			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1[n],color2[n],color3[n]);
 			n++;
-			color1 = color1 - 10;
-			color2 = color2 - 40;
-			color3 = color3 + 35;
 		}
 
 
@@ -132,7 +130,10 @@ public class Game {
 				System.out.println("Game is over!");
 				break;
 			}
-
+			
+			//Prints out which players turn it is
+			System.out.println(playerNames[turn]+"'s turn");
+			
 			//user prompted button, when pressed the value of rollDice is stored in i.
 			buttonPressed = GUI.getUserButtonPressed(null, rollDice);
 
