@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 
 
 import boundaryToMatador.GUI;
+
 import gameEngine.GameBoard;
 
 public class Game {
@@ -88,8 +89,8 @@ public class Game {
 
 		n = 0; //Resest the variable used to run through the array
 		//Predetermined colors for all the six cars
-		int[] color1 = { 255,0,18,255,17,171};
-		int[] color2 = { 255,0,247,56,0,0,0};
+		int[] color1 = { 255,0,18,255,0,230};
+		int[] color2 = { 255,0,247,56,145,0};
 		int[] color3 = { 255,0,56,26,255,255};
 		//adds player cars to the game
 		while (n<=NumberOfPlayers-1){
