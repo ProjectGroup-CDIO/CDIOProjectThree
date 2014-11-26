@@ -1,5 +1,8 @@
 package gameEngine;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 public class Territory extends Ownable {
 	
 	private int rent; 
@@ -21,9 +24,17 @@ public class Territory extends Ownable {
 	 */
 	
 	public void buyProperty(Player lander){
+		if(lander.getAccount().getBalance()<super.getPrice()){
+			final JPanel panel = new JPanel();
+			JOptionPane.showMessageDialog(panel, "Insufficient funds", "Service message",
+			JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		else{
 		super.setOwner(lander);
 		System.out.println(getPrice());
 		lander.getAccount().withdraw(getPrice());
+		}
 	}
 	
 	/**
@@ -45,8 +56,26 @@ public class Territory extends Ownable {
 			lander.getAccount().withdraw(rent);
 			super.getOwner().getAccount().deposit(rent);	
 		}
-		else{
-			buyProperty(lander);
+		else{				
+			Object[] options = {
+					"Buy it now!",
+                    "No, thank you",};
+			int buttonPressed = JOptionPane.showOptionDialog(null,
+					"Do you wish to own this property? (Territory-property)",
+					"DECIDE NOW!",
+					JOptionPane.WARNING_MESSAGE,
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					options, 
+					options[0]);
+			
+			if(buttonPressed == 0){
+				buyProperty(lander);
+			}	
+			else if(buttonPressed == 1){
+				return;
+			}
+			
 		}
 		
 	}

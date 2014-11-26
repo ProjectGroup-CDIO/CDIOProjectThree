@@ -13,11 +13,7 @@ public class Tax extends Fields {
 	 * @param fieldName name of field
 	 * @param fieldNumber number of field on the game board
 	 * @param baseTax Base tax
-<<<<<<< HEAD
-	 * @param percentTax Percent tax in who numbers. i.e. 10% is 10.
-=======
 	 * @param percentTax Percent tax in whole numbers. i.e. 10% is 10.
->>>>>>> branch 'master' of https://github.com/ProjectGroup-CDIO/CDIOProjectThree.git
 	 */
 	
 	public Tax(String fieldName, int fieldNumber, int baseTax, int percentTax) {
@@ -26,16 +22,12 @@ public class Tax extends Fields {
 		this.percentTax = percentTax; 
 	}
 
-	public int getBaseTaxCaravan() {
+	public int getBaseTax() {
 		return baseTax;
 	}
 
-	public double getPercentTaxCaravan() {
+	public double getPercentTax() {
 		return percentTax;
-	}
-	
-	public int getBaseTaxGoldmine() {
-		return baseTax; 
 	}
 	
 	/**
@@ -52,7 +44,7 @@ public class Tax extends Fields {
 			Object[] options = {
 					"10% of your fortune",
                     "4000 straight",};
-			int n = JOptionPane.showOptionDialog(null,
+			int buttonPressed = JOptionPane.showOptionDialog(null,
     "Do you want to pay 10% of your fortune or 4000?",
     "DECIDE NOW!",
     JOptionPane.WARNING_MESSAGE,
@@ -60,11 +52,11 @@ public class Tax extends Fields {
     null,
     options, 
     options[0]);
-			if(n == 0){
-				playerWhoLanded.getAccount().withdraw((int) ((percentTax/100) * playerWhoLanded
+			if(buttonPressed == 0){
+				playerWhoLanded.getAccount().withdraw((int) ((percentTax/100.0) * playerWhoLanded
 						.getAccount().getBalance()));
 			}
-			if(n == 1) {
+			if(buttonPressed == 1) {
 				playerWhoLanded.getAccount().withdraw(baseTax);
 			}
 		}

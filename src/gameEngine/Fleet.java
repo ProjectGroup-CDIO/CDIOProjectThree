@@ -1,5 +1,8 @@
 package gameEngine;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 public class Fleet extends Ownable {
 	
 	/**
@@ -48,9 +51,17 @@ public class Fleet extends Ownable {
 	 * Lets the player buy a fleet that's not owned
 	 */
 	public void buyProperty(Player player){
-		super.setOwner(player);//sets the owner to be the player which a landed.
-		player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
-		super.getOwner().incrementFleetsOwned();//Adds one to the fleets owned under player.
+		if (player.getAccount().getBalance()<super.getPrice()){
+			final JPanel panel = new JPanel();
+			JOptionPane.showMessageDialog(panel, "Insufficient funds", "Service message",
+			JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		else{
+			super.setOwner(player);//sets the owner to be the player which a landed.
+			player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
+			super.getOwner().incrementFleetsOwned();//Adds one to the fleets owned under player.
+		}
 	}
 	
 	/*
@@ -66,9 +77,24 @@ public class Fleet extends Ownable {
 			player.getAccount().withdraw(getRent());
 		}
 		else {//Hvis der ikke er nogen ejer at den fleet man har landet p�, k�ber man fleet'en
-			buyProperty(player);
+			Object[] options = {
+					"Buy it now!",
+                    "No, thank you",};
+			int buttonPressed = JOptionPane.showOptionDialog(null,
+					"Do you wish to own this property? (Fleet-property)",
+					"DECIDE NOW!",
+					JOptionPane.WARNING_MESSAGE,
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					options, 
+					options[0]);
+			
+			if(buttonPressed == 0){
+				buyProperty(player);
+			}	
+			else if(buttonPressed == 1){
+				return;
+			}
 		}
 	}
-
 }
-

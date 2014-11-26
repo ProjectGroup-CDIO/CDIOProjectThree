@@ -1,5 +1,8 @@
 package gameEngine;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 public class LaborCamp extends Ownable {
 	
 	 /**
@@ -35,18 +38,42 @@ public class LaborCamp extends Ownable {
 	 * Missing so that if a player has insufficient funds he cant buy the field.
 	 */
 	public void buyProperty(Player playerWhoLandedOnField){
+		if(playerWhoLandedOnField.getAccount().getBalance()<super.getPrice()){
+			final JPanel panel = new JPanel();
+			JOptionPane.showMessageDialog(panel, "Insufficient funds", "Service message",
+			JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+		else{
 		super.setOwner(playerWhoLandedOnField);
 		playerWhoLandedOnField.getAccount().withdraw(getPrice());
+		}
 	}
 
 	public void landOnField(Player playerWhoLandedOnField) { 
 		if(super.getOwner() != null){
 			playerWhoLandedOnField.getAccount().withdraw(getRent());
 			super.getOwner().getAccount().deposit(getRent());
-		}else{
-			buyProperty(playerWhoLandedOnField);	
 		}
-
+		else{
+			Object[] options = {
+					"Buy it now!",
+                    "No, thank you",};
+			int buttonPressed = JOptionPane.showOptionDialog(null,
+					"Do you wish to own this property? (LaborCamp-property)",
+					"DECIDE NOW!",
+					JOptionPane.WARNING_MESSAGE,
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					options, 
+					options[0]);
 			
+			if(buttonPressed == 0){
+				buyProperty(playerWhoLandedOnField);
+			}	
+			else if(buttonPressed == 1){
+				return;
+			}	
+		}
 	}
 }
