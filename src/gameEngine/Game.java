@@ -138,6 +138,9 @@ public class Game {
 				inactivePlayers  = 0;
 				n = 0;
 			}
+			/*sssss
+			 * 
+			 */
 
 			//user prompted button, when pressed the value of rollDice is stored in i.
 			buttonPressed = GUI.getUserButtonPressed(null, rollDice);
