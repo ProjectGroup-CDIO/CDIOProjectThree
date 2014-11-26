@@ -3,6 +3,7 @@ package gameEngine;
 
 import javax.swing.JOptionPane;
 
+
 import boundaryToMatador.GUI;
 import boundaryToMatador.Car; //in order to create a custom car
 import gameEngine.GameBoard;
@@ -47,7 +48,8 @@ public class Game {
 	private static String isWinner = "";
 	private static String draw = "";
 
-
+	private int inactivePlayers  = 0; //Variable to check amount of inactive player
+	
 	public void game(){
 
 		//variables created for storing the users names for the game in an array
@@ -89,7 +91,6 @@ public class Game {
 		Die dieOne = new Die();
 
 		int turn = 0; //Variable used to determine which players turn it is.
-		int inactivePlayers  = 0; //Variable to check amount of inactive player
 
 
 		n = 0; //Resest the variable used to run through the array
@@ -111,13 +112,6 @@ public class Game {
 		//Maximum amount of players that can be inactive
 		int MaxInactive = NumberOfPlayers - 1;
 		while(game) {
-			//Checks how many players have lost
-			while (n <= NumberOfPlayers - 1){
-				if (activePlayers[n]!= true){
-					inactivePlayers++;//Increments in case of a player who have lost
-				}
-				n++;
-			}
 			//Checks if the players have already lost. If so, next players turn
 			if (activePlayers[turn]!=true){
 				turn++;
@@ -132,11 +126,6 @@ public class Game {
 				GUI.addPlayer(playerNames[turn]+" is the winner!",playerTurn[turn].getAccount().getBalance(), 0, 0, 0);
 				System.out.println("Game is over!");
 				break;
-			}
-			//Resets in case of new turn
-			else if(inactivePlayers!=MaxInactive){
-				inactivePlayers  = 0;
-				n = 0;
 			}
 
 			//user prompted button, when pressed the value of rollDice is stored in i.
@@ -182,6 +171,7 @@ public class Game {
 	private void checkForLoserAndExecute(String[] playerNames, int turn) {
 		if(playerTurn[turn].getAccount().getBalance()==0){
 			activePlayers[turn] = false;
+			inactivePlayers++;
 			GUI.removeAllCars(playerNames[turn]); //Player is removed from board
 
 			//removes bankrupt player as owner of his fields
