@@ -17,7 +17,7 @@ public class Fleet extends Ownable {
 	}
 	
 	/*
-	 * The Value of the amount of fleet you own. RENt_1 = you own 1 Fleet RENT_2 = you own 2 ect.
+	 * The rent of the fleet corresponding to owner.getFleetsOwned()
 	 */
 	
 	final int RENT_1 = 500;
@@ -47,8 +47,9 @@ public class Fleet extends Ownable {
 				
 		}
 	}
-	/*
-	 * Lets the player buy a fleet that's not owned
+	/**
+	 * Prompts the player if he wants to buy a not-owned fleet if players account balance > price
+	 * @param player player who landed on the field
 	 */
 	public void buyProperty(Player player){
 		if (player.getAccount().getBalance()<super.getPrice()){
@@ -58,25 +59,26 @@ public class Fleet extends Ownable {
 			return;
 		}
 		else{
-			super.setOwner(player);//sets the owner to be the player which a landed.
-			player.getAccount().withdraw(getPrice());//Withdraws the price for the field from the player which landed.
-			super.getOwner().incrementFleetsOwned();//Adds one to the fleets owned under player.
+			super.setOwner(player);
+			player.getAccount().withdraw(getPrice());
+			super.getOwner().incrementFleetsOwned();
 		}
 	}
 	
-	/*
-	 *(non-Javadoc)
-	 * @see gameEngine.Fields#landOnField(gameEngine.Player) Use the metod soo the money can withdraw from the player how landed on the Fleet field and diposit to the owner of the fleet
+	/**
+	 * Updates balances of the owner and the player who landed.
+	 * If the field is not owned, the player who landed on there can choose to buy it.
+	 * @param player player who landed on the field
 	 */
 	
 	@Override
 	public void landOnField(Player player) {
-		//Hvis der er en ejer af den fleet man lander p�, betaler man leje
 		if (super.getOwner() != null){
 			super.getOwner().getAccount().deposit(getRent());
 			player.getAccount().withdraw(getRent());
 		}
-		else {//Hvis der ikke er nogen ejer at den fleet man har landet p�, k�ber man fleet'en
+		else {
+			//prompts the player to buy the field
 			Object[] options = {
 					"Buy it now!",
                     "No, thank you",};
