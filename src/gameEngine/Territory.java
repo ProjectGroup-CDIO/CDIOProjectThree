@@ -8,19 +8,21 @@ public class Territory extends Ownable {
 	private int rent; 
 	
 	/**
-	 * @param fieldName is the name of the field the player lands on.
-	 * @param fieldnumber is the number of the field the player lands on.
-	 * @param price is the buy out price of the field.
-	 * @param rent requried if a player lands on an owned field.  
+	 * Constructs a Territory field
+	 * @param fieldName name of the field
+	 * @param fieldnumber number of the field
+	 * @param price price of the field
+	 * @param rent rent of the field 
 	 */
 	
 	public Territory(String fieldName, int fieldnumber, int price, int rent) {
 		super(fieldName, fieldnumber, price);
 		this.rent = rent;
 	}
+	
 	/**
-	 * 
-	 * @param lander Player who lands on the field.
+	 * Prompts the player if he wants to buy a not-owned fleet if players account balance > price
+	 * @param lander player who landed on the field
 	 */
 	
 	public void buyProperty(Player lander){
@@ -38,17 +40,10 @@ public class Territory extends Ownable {
 	}
 	
 	/**
-	 * @param owner is the owner of the field.
-	 * @param lander is the player who lands on the field. 
-	 * @param withdraw = amount of points withdrawn from the lander and deposits them to the owner.
+	 * Updates balances of the owner and the player who landed.
+	 * If the field is not owned, the player who landed on there can choose to buy it.
+	 * @param player player who landed on the field
 	 */
-	
-	public void completeRent(Player owner, Player lander){
-		
-			lander.getAccount().withdraw(getRent());
-			owner.getAccount().deposit(getRent());
-		
-	}
 
 	@Override
 	public void landOnField( Player lander){

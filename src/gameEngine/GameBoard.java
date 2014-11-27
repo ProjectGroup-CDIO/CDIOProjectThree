@@ -1,5 +1,11 @@
 package gameEngine;
 
+/*
+ * This class is used to contain the gameboard of the game, it is predefined.
+ * There is two arrays, this is done to makes sure that we can get the values from both
+ * the given field and the ownable values connected to the field.
+ * 
+ */
 public class GameBoard {
 	
 	Ownable[] ownables = new Ownable[]{
@@ -46,13 +52,6 @@ public class GameBoard {
 		ownables[16],
 		new Refuge("Monastery", 22, 500)
 	};
-	/*
-	public void resetOwner() {
-		for( int i = 0; i < ownables.length(); i++){
-			
-		}
-	}
-	*/
 }
 
 

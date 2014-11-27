@@ -10,13 +10,16 @@ public class TestsDie {
 	@Before
 	public void setUp() throws Exception {
 	}
-
+	/*
+	 * This test is used to make sure that the rolls are falling with the Randomness we
+	 * expect.
+	 */
 	@Test
 	public void testRollDie() {
 
 
-		Die dieOne = new Die();
-		Die dieTwo = new Die();
+		Die die = new Die();
+
 
 		int throw2 = 0;
 		int throw3 = 0;
@@ -33,10 +36,9 @@ public class TestsDie {
 		int throwValue;
 
 		for( int i = 0 ; i < 1000000; i++){
-			int faceOne = dieOne.rollDie();
-			int faceTwo = dieTwo.rollDie();
 
-			throwValue = faceOne + faceTwo;
+
+			throwValue = die.rollDie();
 
 			if (throwValue == 2){
 				throw2 = throw2 + 1;
@@ -84,7 +86,7 @@ public class TestsDie {
 		System.out.println ("Nr. of 10 rolled: " + throw10 + "  (83300)");
 		System.out.println ("Nr. of 11 rolled: " + throw11 + "  (55600)");
 		System.out.println ("Nr. of 12 rolled: " + throw12 + "  (27800)");
-		
+
 		assertTrue(26800 < throw2 && throw2 < 28800);
 		assertTrue(54600 < throw3 && throw3 < 56600);
 		assertTrue(82300 < throw4 && throw4 < 84300);

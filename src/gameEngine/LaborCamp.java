@@ -5,38 +5,28 @@ import javax.swing.JPanel;
 
 public class LaborCamp extends Ownable {
 	
-	 /**
-	 * @param fieldName Name of the field in "use"
-	 * @param ownerOfCurrentField Name of the player who owns the currently used field
-	 * @param faceValue The value of the dice
-	 */
-	
 	private int baseRent = 100;
 	
 	/**
-	 * Constructor to labor camp
+	 * Constructs a Labor Camp
 	 * @param fieldName Name of field
 	 * @param fieldNumber Number of field
 	 * @param price Price of field
 	 */
-	public LaborCamp(String fieldName, int fieldNumber, int price){ //Har fjernet faceValue fra constructor
+	
+	public LaborCamp(String fieldName, int fieldNumber, int price){ 
 		super(fieldName, fieldNumber, price);
 	}
-	//Withdraws BaseRent from player who lands on the field, and deposits BaseRent to player who owns the field
-	public void completeBaseRent(Player ownerOfCurrentField, Player playerWhoLandedOnCurrentField){
-		playerWhoLandedOnCurrentField.getAccount().withdraw(getRent());
-		ownerOfCurrentField.getAccount().deposit(getRent());
-	}
-
 
 	public int getRent() {
 		return baseRent * Die.getLastRoll();
 	}
+	
 	/**
-	 * 
-	 * @param playerWhoLandedOnField The first player which lands on the field buys the property.
-	 * Missing so that if a player has insufficient funds he cant buy the field.
+	 * Prompts the player if he wants to buy a not-owned fleet if players account balance > price
+	 * @param playerWhoLandedOnField player who landed on the field
 	 */
+	
 	public void buyProperty(Player playerWhoLandedOnField){
 		if(playerWhoLandedOnField.getAccount().getBalance()<super.getPrice()){
 			final JPanel panel = new JPanel();
@@ -50,6 +40,12 @@ public class LaborCamp extends Ownable {
 		System.out.println(playerWhoLandedOnField.getName()+" bought "+fieldName+" for "+getPrice());
 		}
 	}
+	
+	/**
+	 * Updates balances of the owner and the player who landed.
+	 * If the field is not owned, the player who landed on there can choose to buy it.
+	 * @param playerWhoLandedOnField player who landed on the field
+	 */
 
 	public void landOnField(Player playerWhoLandedOnField) { 
 		if(super.getOwner() != null){
