@@ -88,7 +88,11 @@ public class Game {
 
 
 		n = 0; //Resest the variable used to run through the array
-		//Predetermined colors for all the six cars
+		
+		/*
+		 * Color1-3 is the value to the six color made with RGB color-model
+		 * To set the color of the six players cars.
+		 */
 		int[] color1 = { 255,0,18,255,0,230};
 		int[] color2 = { 255,0,247,56,145,0};
 		int[] color3 = { 255,0,56,26,255,255};
