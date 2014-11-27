@@ -13,22 +13,22 @@ public class TestsAccount {
 		acc1 = new Account();
 	}
 	
+	//test whether the account is instantiated with balance = 30000
 	@Test
 	public void testAccount() {
-	assertEquals(1000, acc1.getBalance()); //test whether the account is instantiated with balanca = 1000
-
+	assertEquals(30000, acc1.getBalance()); 
 	}
 
 	@Test
 	public void testDeposit() {
 		acc1.deposit(100);
-		assertEquals(1100, acc1.getBalance());
+		assertEquals(30100, acc1.getBalance());
 	}
 
 	@Test
 	public void testWithdraw() {
 		acc1.withdraw(100);
-		assertEquals(900, acc1.getBalance());
+		assertEquals(29900, acc1.getBalance());
 	}
 
 	@Test

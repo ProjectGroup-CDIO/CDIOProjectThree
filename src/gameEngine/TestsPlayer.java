@@ -32,7 +32,7 @@ public class TestsPlayer {
 	@Test //tests to see if the playerAcc is properly translated into a string
 	public void testToString() {
 		System.out.println(testPlay.toString());
-		assertTrue(testPlay.toString().contains("1000"));
+		assertTrue(testPlay.toString().contains("30000"));
 	}
 
 }
