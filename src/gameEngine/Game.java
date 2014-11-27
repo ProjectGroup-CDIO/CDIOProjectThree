@@ -75,6 +75,7 @@ public class Game {
 		int n = 0; //Variable used to run through the array
 		while (n<=NumberOfPlayers-1){
 			playerNames[n] = GUI.getUserString(typeNames[n]);
+			playerTurn[n].setName(playerNames[n]);
 			n++;
 		}
 
