@@ -123,7 +123,7 @@ public class Game {
 			//Terminates the game if all except one have lost
 			if (inactivePlayers==MaxInactive){
 				Object[] option = {"Exit game!",};         		
-				int endButtonPressed = JOptionPane.showOptionDialog(null,playerNames[turn]+" is the winner! " + " Thanks for playing! "," You won ",
+				int endButtonPressed = JOptionPane.showOptionDialog(null,playerNames[turn]+" is the winner! " + " Thanks for playing! ", playerNames[turn]+ " won!!! ",
 				JOptionPane.WARNING_MESSAGE,
 				JOptionPane.QUESTION_MESSAGE,
 				null,
@@ -153,7 +153,7 @@ public class Game {
 					
 					//sets car at field corresponding to the value of the players position
 					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
-					System.out.println(playerNames[turn]+" threw a "+trow);
+					System.out.println(playerNames[turn]+" threw a "+playerTurn[turn].getCurrentPos());
 
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
 					
@@ -191,7 +191,6 @@ public class Game {
 			 for(int is = 0; is < currentBoard.ownables.length; is++){
 				if(currentBoard.ownables[is].getOwner() == playerTurn[turn]) {
 					currentBoard.ownables[is].setOwner(null);
-					currentBoard.ownables[is].setOwnerName(null);
 				}	
 			
 			}
