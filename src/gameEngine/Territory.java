@@ -34,6 +34,7 @@ public class Territory extends Ownable {
 		}
 		else{
 		super.setOwner(lander);
+		super.setOwnerName(lander.getName());
 		lander.getAccount().withdraw(getPrice());
 		System.out.println(lander.getName()+" bought "+fieldName+" for "+getPrice());
 		}

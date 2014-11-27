@@ -43,10 +43,9 @@ public abstract class Ownable extends Fields {
 	public void setOwner(Player owner) {
 		this.owner = owner; 
 	}
-	public void setOwnerName(Player owner) { 
-		this.name = owner.getName();
+	public void setOwnerName(String name) { 
+		this.name = name;
 	}
-	
 	public String getOwnerName() {
 		return name; 
 	}

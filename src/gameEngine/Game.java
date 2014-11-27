@@ -153,7 +153,7 @@ public class Game {
 					
 					//sets car at field corresponding to the value of the players position
 					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
-					System.out.println(playerNames[turn]+" threw a "+playerTurn[turn].getCurrentPos());
+					System.out.println(playerNames[turn]+" threw a "+trow);
 
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
 					
@@ -191,6 +191,7 @@ public class Game {
 			 for(int is = 0; is < currentBoard.ownables.length; is++){
 				if(currentBoard.ownables[is].getOwner() == playerTurn[turn]) {
 					currentBoard.ownables[is].setOwner(null);
+					currentBoard.ownables[is].setOwnerName(null);
 				}	
 			
 			}

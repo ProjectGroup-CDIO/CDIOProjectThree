@@ -62,6 +62,7 @@ public class Fleet extends Ownable {
 		}
 		else{
 			super.setOwner(player);
+			super.setOwnerName(player.getName());
 			player.getAccount().withdraw(getPrice());
 			super.getOwner().incrementFleetsOwned();
 			System.out.println(player.getName()+" bought "+fieldName+" for "+getPrice());
