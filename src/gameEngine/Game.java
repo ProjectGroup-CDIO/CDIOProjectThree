@@ -10,6 +10,7 @@ import gameEngine.GameBoard;
 
 public class Game {
 
+	//All players are created
 	Player player1 = new Player("PlayerOne");
 	Player player2 = new Player("PlayerTwo");
 	Player player3 = new Player("PlayerThree");
@@ -21,14 +22,17 @@ public class Game {
 
 	GameBoard currentBoard = new GameBoard();
 
+	//All players are set to true. True means that they are still active and haven't lost
 	private boolean playerOne = true;
 	private boolean playerTwo = true;
 	private boolean playerThree = true;
 	private boolean playerFour = true;
 	private boolean playerFive = true;
 	private boolean playerSix = true;
+	//All players state of activity are placed in an array
 	private boolean activePlayers[]={playerOne,playerTwo,playerThree,playerFour,playerFive,playerSix};
-
+	
+	//The game will be running while its' true
 	private boolean game = true;
 
 	//Language used in the code, will be changed by the language setting.
@@ -43,25 +47,23 @@ public class Game {
 
 	private static String rollDice = "";
 
+	private int inactivePlayers  = 0; //Variable to check amount of inactive player. It starts with 0, because they all start out active
 
-	private int inactivePlayers  = 0; //Variable to check amount of inactive player
-	
 	public void game(){
 
 		//variables created for storing the users names for the game in an array
 		//With only a Max amount of 6 players, the len of the array is only 6
 		String playerNames[] = {"","","","","",""};
 
-		
 
 		//The choice of amount of players
-		String[] amount = { "2", "3", "4","5","6"};
+		String[] amount = { "2", "3", "4","5","6"};//Lowest amount of players will be 2
 		//Selection box in which amount of players is chosen
 		String players = (String) JOptionPane.showInputDialog(null, "Choose amount of players:",
 				"The Choice of a Lifetime", JOptionPane.QUESTION_MESSAGE, null,
 				amount, 
 				amount[0]); //Default choice is 2 players
-		int NumberOfPlayers = Integer.parseInt(players);
+		int NumberOfPlayers = Integer.parseInt(players);//Turns the choice into an integer
 
 
 		//Game Window initialization
@@ -76,7 +78,11 @@ public class Game {
 		while (n<=NumberOfPlayers-1){
 			playerNames[n] = GUI.getUserString(typeNames[n]);
 			playerTurn[n].setName(playerNames[n]);
-			n++;
+			if (playerNames[n].equals("")){
+				playerNames[n] = "Spiller"+(n+1);//Add 1 to n, because we wont start with Spiller0
+				playerTurn[n].setName(playerNames[n]);
+			}
+			n++;//increment n in order to perform the next iteration
 		}
 
 		//variable used to store the button pressed value
@@ -109,6 +115,7 @@ public class Game {
 		int MaxInactive = NumberOfPlayers - 1;
 		while(game) {
 			
+			//Updates the balance of all players at the start of each turn
 			for(int check = 0; check < NumberOfPlayers; check++){
 				GUI.setBalance(playerNames[check], playerTurn[check].getAccount().getBalance());
 			}
@@ -135,9 +142,7 @@ public class Game {
 				}
 				
 				}
-
-			
-			
+		
 			//Prints out which players turn it is
 			System.out.println(playerNames[turn]+"'s turn");
 			
@@ -150,7 +155,7 @@ public class Game {
 
 				if(activePlayers[turn]) {
 					GUI.removeAllCars(playerNames[turn]);//Removes the player from the board.
-					playerTurn[turn].updateCurrentPos(trow);
+					playerTurn[turn].updateCurrentPos(trow);//Updates the current position by adding with trow
 					
 					//sets car at field corresponding to the value of the players position
 					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
@@ -176,15 +181,11 @@ public class Game {
 				}
 		}
 	}
-
-
-
-
-
+	//Checks if the players have lost all points
 	private void checkForLoserAndExecute(String[] playerNames, int turn) {
 		if(playerTurn[turn].getAccount().getBalance()==0){
-			activePlayers[turn] = false;
-			inactivePlayers++;
+			activePlayers[turn] = false;//Sets the player to false (inactive), when the player have lost
+			inactivePlayers++;//increment amount of inactive players
 			GUI.removeAllCars(playerNames[turn]); //Player is removed from board
 
 			//removes bankrupt player as owner of his fields
