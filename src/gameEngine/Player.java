@@ -9,11 +9,9 @@ public class Player {
 
 
 	/**
-	 * 
 	 * returns an integer with the players current position. 
 	 * If the players position is more than 21 (the 21 fields + START at 0)
 	 * 21 is subtracted when the currentPos i needed
-	 * 
 	 * @return the current position of the player in the game.
 	 */
 	public int getCurrentPos() {
@@ -24,8 +22,8 @@ public class Player {
 	}
 
 	/**
-	 * 
-	 * @param throwValue is the value of the dice roll, this is added to the position of the player
+	 * updates the players position on the game board
+	 * @param throwValue value of the dice roll
 	 */
 	public void updateCurrentPos(int throwValue) {
 		this.currentPos = currentPos + throwValue;
@@ -47,36 +45,32 @@ public class Player {
 		this.name = name; 
 	}
 	/**
-	 * 
 	 * @return the name of the player
 	 */
 	public String getName() {
 		return name; 
 	}
 	/**
-	 * Converts the players name and account values to a string and returns it
+	 * @return name and account balance of the player
 	 */
 	public String toString() {
 		return name + "'s " + playerAcc.toString();
 	}
 	/**
-	 * 
-	 * @return returns the players account for further use.
+	 * @return returns the players account
 	 */
 	public Account getAccount() {
 		return playerAcc;
 	}
 	
 	/**
-	 * 
-	 * @return the amount of fleets that a player owns
+	 * @return the amount of fleets owned by a player
 	 */
 	public int getFleetsOwned(){
 		return fleetsOwned;
 	}
 	/**
 	 * adds 1 to the amount of fleets a player owns.
-	 * 
 	 */
 	public void incrementFleetsOwned(){
 		this.fleetsOwned = this.fleetsOwned + 1;
