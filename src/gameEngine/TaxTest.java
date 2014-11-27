@@ -32,5 +32,5 @@ public class TaxTest {
 		System.out.println(playerTestLand.getAccount().getBalance());
 		assertEquals(playerTestLand.getAccount().getBalance(), 26000);
 	}
-
+ 
 }
