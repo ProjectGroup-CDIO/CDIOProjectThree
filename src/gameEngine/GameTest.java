@@ -17,7 +17,10 @@ public class GameTest {
 		
 		
 	}
-
+	/*
+	 * We used this test to check if the reset of owners worked when a given player has no 
+	 * more money to play for.
+	 */
 	@Test
 	public void testResetOwner() {
 		currentBoard.fields[2].landOnField(playerTurn[0]);
@@ -28,8 +31,7 @@ public class GameTest {
 //			System.out.println("--> "+(currentBoard.ownables[is].getOwner() == playerTurn[0]));
 			if(currentBoard.ownables[is].getOwner() == playerTurn[0]) {
 				currentBoard.ownables[is].setOwner(null);
-//				System.out.println("owner --> "+(currentBoard.ownables[is].getOwner()));
-//				System.out.println("current --> "+(playerTurn[0]));
+
 			}
 		}
 		assertNull(currentBoard.ownables[1].getOwner());

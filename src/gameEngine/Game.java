@@ -5,10 +5,8 @@ import javax.swing.JOptionPane;
 
 
 import boundaryToMatador.GUI;
-import boundaryToMatador.Car; //in order to create a custom car
-import gameEngine.GameBoard;
 
-import java.awt.Color; //in order to change color of the car and not use RGB-codes
+import gameEngine.GameBoard;
 
 public class Game {
 
@@ -44,9 +42,7 @@ public class Game {
 	private static String typeNames[] = {typeNameOne, typeNameTwo,typeNameThree,typeNameFour,typeNameFive,typeNameSix};
 
 	private static String rollDice = "";
-	private static String won = "";
-	private static String isWinner = "";
-	private static String draw = "";
+
 
 	private int inactivePlayers  = 0; //Variable to check amount of inactive player
 	
@@ -73,9 +69,7 @@ public class Game {
 		Game.setTypeNameOne("Enter name for player 1");
 		Game.setTypeNameTwo("Enter name for player 2");
 		Game.setRollDice("Roll Dice");
-		Game.setWon(" WON!!!");
-		Game.setIsWinner(" IS THE WINNER!!!");
-		Game.setDraw("THE GAME WAS A DRAW");
+
 
 		//User names are prompted from the users, and store in previous variables
 		int n = 0; //Variable used to run through the array
@@ -94,17 +88,18 @@ public class Game {
 
 
 		n = 0; //Resest the variable used to run through the array
-		int color1 = 255;
-		int color2 = 255;
-		int color3 = 0;
+		
+		/*
+		 * Color1-3 is the value to the six color made with RGB color-model
+		 * To set the color of the six players cars.
+		 */
+		int[] color1 = { 255,0,18,255,0,230};
+		int[] color2 = { 255,0,247,56,145,0};
+		int[] color3 = { 255,0,56,26,255,255};
 		//adds player cars to the game
 		while (n<=NumberOfPlayers-1){
-			Game.setTypeNameOne("Indtast navn for spiller 1");
-			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1,color2,color3);
+			GUI.addPlayer(playerNames[n],playerTurn[n].getAccount().getBalance(),color1[n],color2[n],color3[n]);
 			n++;
-			color1 = color1 - 10;
-			color2 = color2 - 40;
-			color3 = color3 + 35;
 		}
 
 
@@ -127,12 +122,24 @@ public class Game {
 			}
 			//Terminates the game if all except one have lost
 			if (inactivePlayers==MaxInactive){
-				game=false;
-				GUI.addPlayer(playerNames[turn]+" is the winner!",playerTurn[turn].getAccount().getBalance(), 0, 0, 0);
-				System.out.println("Game is over!");
-				break;
-			}
+				Object[] option = {"Exit game!",};         		
+				int endButtonPressed = JOptionPane.showOptionDialog(null,playerNames[turn]+" is the winner! " + " Thanks for playing! "," You won ",
+				JOptionPane.WARNING_MESSAGE,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				option,
+				option[0]);
+				if (endButtonPressed == 0){
+				System.exit(0);
+				}
+				
+				}
 
+			
+			
+			//Prints out which players turn it is
+			System.out.println(playerNames[turn]+"'s turn");
+			
 			//user prompted button, when pressed the value of rollDice is stored in i.
 			buttonPressed = GUI.getUserButtonPressed(null, rollDice);
 
@@ -146,7 +153,7 @@ public class Game {
 					
 					//sets car at field corresponding to the value of the players position
 					GUI.setCar(playerTurn[turn].getCurrentPos()+1, playerNames[turn]);
-					System.out.println(playerTurn[turn].getCurrentPos());
+					System.out.println(playerNames[turn]+" threw a "+playerTurn[turn].getCurrentPos());
 
 					currentBoard.fields[playerTurn[turn].getCurrentPos()].landOnField(playerTurn[turn]);
 					
@@ -166,10 +173,10 @@ public class Game {
 					}
 
 				}
-
-			}
-
 		}
+	}
+
+
 
 
 
@@ -206,15 +213,7 @@ public class Game {
 	public static void setRollDice(String rollDice) {
 		Game.rollDice = rollDice;
 	}
-	public static void setWon(String won) {
-		Game.won = won;
-	}
-	public static void setIsWinner(String isWinner) {
-		Game.isWinner = isWinner;
-	}
-	public static void setDraw(String draw) {
-		Game.draw = draw;
+
 	}
 
-}
 

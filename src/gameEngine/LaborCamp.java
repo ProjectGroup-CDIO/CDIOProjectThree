@@ -37,6 +37,7 @@ public class LaborCamp extends Ownable {
 		else{
 		super.setOwner(playerWhoLandedOnField);
 		playerWhoLandedOnField.getAccount().withdraw(getPrice());
+		System.out.println(playerWhoLandedOnField.getName()+" bought "+fieldName+" for "+getPrice());
 		}
 	}
 	
@@ -50,6 +51,7 @@ public class LaborCamp extends Ownable {
 		if(super.getOwner() != null){
 			playerWhoLandedOnField.getAccount().withdraw(getRent());
 			super.getOwner().getAccount().deposit(getRent());
+			System.out.println(playerWhoLandedOnField.getName()+" paid "+getRent()+" in rent to "+getOwnerName());
 		}
 		else{
 			Object[] options = {

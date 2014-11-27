@@ -21,24 +21,32 @@ public class Tax extends Fields {
 		this.baseTax = baseTax;
 		this.percentTax = percentTax; 
 	}
-
+	/**
+	 * 
+	 * @return the set baseTax, this is a int
+	 */
 	public int getBaseTax() {
 		return baseTax;
 	}
-
+	/**
+	 * 
+	 * @return the percentTax, this is a double.
+	 */
 	public double getPercentTax() {
 		return percentTax;
 	}
 	
 	/**
 	 * Withdraws the amount corresponding to the Labor Camp field.
-	 * On the Caravan Labor Camp field, the player is prompted whether he wants to pay 10% or 4000
+	 * There is two scenarios, the player is prompted whether he wants to pay 10% or 4000
+	 * or if the percentTax is 0 then he is given no option to choose and pays the baseTax.
 	 * @param playerWhoLanded The player who landed on the field
 	 */
 	@Override
 	public void landOnField(Player playerWhoLanded) {
 		if(percentTax == 0) {
 			playerWhoLanded.getAccount().withdraw(baseTax);
+			System.out.println(playerWhoLanded.getName()+" landed on "+fieldName+" and paid "+baseTax);
 		}
 		else {
 			Object[] options = {
@@ -55,9 +63,13 @@ public class Tax extends Fields {
 			if(buttonPressed == 0){
 				playerWhoLanded.getAccount().withdraw((int) ((percentTax/100.0) * playerWhoLanded
 						.getAccount().getBalance()));
+				System.out.println(playerWhoLanded.getName()+" landed on "+fieldName+" and paid "+(((10*playerWhoLanded
+						.getAccount().getBalance())/9)-(playerWhoLanded
+								.getAccount().getBalance())));
 			}
 			if(buttonPressed == 1) {
 				playerWhoLanded.getAccount().withdraw(baseTax);
+				System.out.println(playerWhoLanded.getName()+" landed on "+fieldName+" and paid "+baseTax);
 			}
 		}
 	}

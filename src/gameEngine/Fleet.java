@@ -64,6 +64,7 @@ public class Fleet extends Ownable {
 			super.setOwner(player);
 			player.getAccount().withdraw(getPrice());
 			super.getOwner().incrementFleetsOwned();
+			System.out.println(player.getName()+" bought "+fieldName+" for "+getPrice());
 		}
 	}
 	
@@ -78,6 +79,7 @@ public class Fleet extends Ownable {
 		if (super.getOwner() != null){
 			super.getOwner().getAccount().deposit(getRent());
 			player.getAccount().withdraw(getRent());
+			System.out.println(player.getName()+" paid "+getRent()+" in rent to "+getOwnerName());
 		}
 		else {
 			//prompts the player to buy the field

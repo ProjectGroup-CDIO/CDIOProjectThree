@@ -8,8 +8,8 @@ import org.junit.Before;
 public class LaborCampTest {
 
 	//We're getting players from the player class, dice from Die class and the method Labor from LaberCamp class
-	Player owner;
-	Player guyWhoLandedonField;
+
+	Player playerWhoLandedOnField;
 	Die diceRoll;
 	LaborCamp labor;	
 	Ownable ownable;
@@ -17,8 +17,7 @@ public class LaborCampTest {
 	//Initializing the above
 	@Before
 	public void setup(){
-		owner = new Player("Owner");
-		guyWhoLandedonField = new Player("Lander-Guy");
+		playerWhoLandedOnField = new Player("Lander-Guy");
 		diceRoll = new Die();
 		labor = new LaborCamp("ACB", 3, 1000);
 	}
@@ -33,24 +32,16 @@ public class LaborCampTest {
 		assertEquals(labor.getRent(), 300);		
 	}
 
-	//Tests if BaseRent withdraws and deposits as we want it to
-	//Using system.out.print to visualize it
+	//Tests if playerWhoLandedOnField actually buys the property he lands on
+	//Using system.out.print to visualize it, getting playerWhoLandedOnField's balance aswell
 	@Test
-	public void testCompleteBaseRent() {
+	public void testLandOnField() {
 		
-		System.out.println("Før BaseRent Labor:");
-		System.out.println("John, som ejer feltet, har: " + owner.getAccount().getBalance());
-		System.out.println("Jens, som lander på feltet, har: " + guyWhoLandedonField.getAccount().getBalance());
-		System.out.println();
-
-		labor.completeBaseRent(owner, guyWhoLandedonField); //imports the m
-		assertTrue(owner.getAccount().getBalance()>30000);
-		assertTrue(guyWhoLandedonField.getAccount().getBalance()<30000);
-		
-		System.out.println("Efter BaseRent Labor:");
-		System.out.println("John har nu: " + owner.getAccount().getBalance());
-		System.out.println("Jens har nu: " + guyWhoLandedonField.getAccount().getBalance());	
+		labor.landOnField(playerWhoLandedOnField);; //imports the m
+		assertTrue(playerWhoLandedOnField.getAccount().getBalance()<30000);
+		System.out.println(playerWhoLandedOnField + " bought ACB!");
 		
 	}
+	
 
 }

@@ -17,7 +17,12 @@ public abstract class Fields {
 		this.fieldName = fieldName; 
 		this.fieldNumber = fieldNumber; 
 	}
-	
+	/**
+	 * This is used to have an effect on a given player depending on the field which 
+	 * it landed on.
+	 * 
+	 * @param player the player who have landed on the current field
+	 */
 	public abstract void landOnField(Player player);
 	
 
