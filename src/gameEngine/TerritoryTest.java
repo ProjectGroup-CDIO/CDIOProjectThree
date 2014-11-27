@@ -29,15 +29,42 @@ public class TerritoryTest {
 	}
 	
 	/*
-	 * This test is able to check if completeRent deposits and withdraws as implemented in the code.
+	 * This test is able to check if landOnField() deposits and withdraws as implemented in the code.
 	 */
 	
 	@Test
-	public void testCompleteRent() {
-		territory.completeRent(owner, lander);
-		assertTrue(owner.getAccount().getBalance()>30000);
-		assertTrue(lander.getAccount().getBalance()<30000);
+	public void testLandOnField() {
+		territory.buyProperty(owner);
+		int ownerActual1 = owner.getAccount().getBalance();
+		int ownerExpected1 = 29000;
+		assertEquals(ownerExpected1, ownerActual1);
+		territory.landOnField(lander);
+		int ownerActual2 = owner.getAccount().getBalance();
+		int ownerExpected2 = 29100;
+		assertEquals(ownerExpected2, ownerActual2);
+		int landerActual = lander.getAccount().getBalance();
+		int landerExpected = 29900;
+		assertEquals(landerExpected, landerActual);
+	} 
+	
+	@Test //pop up message saying insufficient funds will appear
+	public void testBuyPropertyInsufficientFunds() {
+		owner.getAccount().setBalance(500);
+		territory.buyProperty(owner);
+		int expected = 500;
+		int actual = owner.getAccount().getBalance();
+		assertEquals(expected, actual);
+				
 	}
+	
+	@Test //will ask whether lander wants to buy the field
+	public void landOnFreeField() {
+		territory.landOnField(lander);
+	} 
+	
+	
+	
+
 
 }
 
