@@ -118,26 +118,17 @@ public class Game {
 			}
 			//Terminates the game if all except one have lost
 			if (inactivePlayers==MaxInactive){
-			game=false;	
-			//GUI.addPlayer(playerNames[turn]+" is the winner!",playerTurn[turn].getAccount().getBalance(), 0, 0, 0);
-				Object[] options = {"Yes, please!",
-				            		"No, thanks!",};
-				int endButtonPressed = JOptionPane.showOptionDialog(null,playerNames[turn]+" is the winner! " + " Would you like to play again? "," You won ",
-				JOptionPane.YES_NO_CANCEL_OPTION,
+				Object[] option = {"Exit game!",};         		
+				int endButtonPressed = JOptionPane.showOptionDialog(null,playerNames[turn]+" is the winner! " + " Thanks for playing! "," You won ",
+				JOptionPane.WARNING_MESSAGE,
 				JOptionPane.QUESTION_MESSAGE,
 				null,
-				options,
-				options[0]);
-				if(endButtonPressed == 0){
-					
-//				GUI.close();				
-//				Game game = new Game();
-//				game.game();
+				option,
+				option[0]);
+				if (endButtonPressed == 0){
+				System.exit(0);
 				}
-				else if (endButtonPressed == 1){
-				System.exit(1);
-				}
-
+				
 				}
 
 			
