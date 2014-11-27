@@ -33,15 +33,28 @@ public class LaborCampTest {
 	}
 
 	//Tests if playerWhoLandedOnField actually buys the property he lands on
-	//Using system.out.print to visualize it, getting playerWhoLandedOnField's balance aswell
+	//Using system.out.print to visualize it
 	@Test
 	public void testLandOnField() {
 		
 		labor.landOnField(playerWhoLandedOnField);; //imports the m
 		assertTrue(playerWhoLandedOnField.getAccount().getBalance()<30000);
-		System.out.println(playerWhoLandedOnField + " bought ACB!");
-		
+		System.out.println(playerWhoLandedOnField + " now owns " + labor.getFieldName());
+			
 	}
 	
-
+	//Tests if the player who lands on a specific field can buy the property
+	//and if the price is subtracted from the players account
+	//When you see the prints, playerWhoLandedOnField's balance is also shown. This is because of
+	//the toString() in Player.java: 	public String toString() {
+	//										return name + "'s " + playerAcc.toString();
+	//									}
+	
+	@Test
+	public void testBuyProperty(){
+		labor.buyProperty(playerWhoLandedOnField);
+		assertTrue(playerWhoLandedOnField.getAccount().getBalance()<30000);
+		System.out.println(playerWhoLandedOnField + " landed on " + labor.getFieldNumber());
+		System.out.println(playerWhoLandedOnField + " bought " + labor.getFieldName() + " for " + labor.getPrice());
+	}
 }
