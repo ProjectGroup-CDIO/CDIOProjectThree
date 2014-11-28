@@ -76,7 +76,7 @@ public class Game {
 		//User names are prompted from the users, and store in previous variables
 		int n = 0; //Variable used to run through the array
 		while (n<=NumberOfPlayers-1){
-			playerNames[n] = GUI.getUserString(typeNames[n]);
+			playerNames[n] = GUI.getUserString(" Enter name for player "+(n+1));
 			playerTurn[n].setName(playerNames[n]);
 			if (playerNames[n].equals("")){
 				playerNames[n] = "Spiller"+(n+1);//Add 1 to n, because we wont start with Spiller0
