@@ -79,7 +79,7 @@ public class Game {
 			playerNames[n] = GUI.getUserString(" Enter name for player "+(n+1));
 			playerTurn[n].setName(playerNames[n]);
 			if (playerNames[n].equals("")){
-				playerNames[n] = "Spiller"+(n+1);//Add 1 to n, because we wont start with Spiller0
+				playerNames[n] = "Player "+(n+1);//Add 1 to n, because we wont start with Spiller0
 				playerTurn[n].setName(playerNames[n]);
 			}
 			n++;//increment n in order to perform the next iteration
